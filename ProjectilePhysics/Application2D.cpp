@@ -46,7 +46,7 @@ bool PhysicsApp::startup() {
 	//m_physicsScene->setTimeStep(0.5f);
 	m_physicsScene->setTimeStep(0.1f);
 
-	float radius = 0.64f;
+	float radius = 0.80f;
 	float speed = 30;
 	vec2 startPos(-40, 0);
 	//float inclination = (float)M_PI / 4.0f; // 45 degrees
@@ -56,8 +56,10 @@ bool PhysicsApp::startup() {
 	//float speedy = speed * sin(radians(inclination));
 	//
 	//m_physicsScene->addActor(new Sphere(
-	//	startPos, vec2(speedx,speedy), 1, radius, vec4(1, 0, 0, 1)));
-	//
+	//	startPos, vec2(speedx,speedy), 1, radius, vec4(1.000,0.833,0.224, 1)));
+	// https://thebookofshaders.com/06/
+	// https://www.w3schools.com/colors/colors_picker.asp
+	// (1.000,0.833,0.224); (0.149,0.141,0.912);
 	m_physicsScene->addActor(new Sphere(startPos, inclination, speed, 1, radius, vec4(1, 0, 0, 1)));
 	//
 	return true;
@@ -178,10 +180,10 @@ void PhysicsApp::setupContinuousDemo(glm::vec2 startPos, float inclination,
 {
 	float t = 0;
 	float tStep = 0.1f;
-	float radius = 0.32f;
+	float radius = 0.48f;
 	int segments = 16;
-	glm::vec4 colour = glm::vec4(0, 1, 1, 1);
-
+	glm::vec4 colour = glm::vec4(0.149, 0.141, 0.912, 1); // https://www.w3schools.com/colors/colors_picker.asp
+	                                          // https://thebookofshaders.com/06/
 	while (t <= 8)
 	{
 		// calculate the x, y position of the projectile at time t 
