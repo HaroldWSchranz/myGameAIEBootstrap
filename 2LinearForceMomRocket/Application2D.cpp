@@ -3,7 +3,7 @@
 #include "Font.h"
 #include "Input.h"
 #include "Gizmos.h"
-#include  <glm\ext.hpp>
+using namespace glm;
 
 PhysicsApp::PhysicsApp() {
 
@@ -32,7 +32,47 @@ bool PhysicsApp::startup() {
 	m_font = new aie::Font("./font/consolas.ttf", 32);
 
 	m_physicsScene = new PhysicsScene();
-	m_physicsScene->setTimeStep(0.01f);
+	//
+	//m_physicsScene->setGravity(glm::vec2(0, 0));   // Newton's 1st Law:    zero gravity: setGravity(glm::vec2(0, 0));
+	//m_physicsScene->setGravity(glm::vec2(0, -10)); // Newton's 2nd Law: nonzero gravity: setGravity(glm::vec2(0, -10));
+	//m_physicsScene->setTimeStep(0.01f);
+
+	//Sphere* ball;
+	//ball = new Sphere(glm::vec2(-80, 0), glm::vec2(10, 30), 3.0f, 4, glm::vec4(1, 0, 0, 1));
+	//m_physicsScene->addActor(ball);
+	////
+	//// Zero gravity
+	//m_physicsScene->setGravity(vec2(0, 0));  // turn off gravity
+	//
+	//Sphere* ball1 = new Sphere(vec2(-4, 0), vec2(0, 0), 4.0f, 4, vec4(1, 0, 0, 1));
+	//Sphere* ball2 = new Sphere(vec2(4, 0), vec2(0, 0), 4.0f, 4, vec4(0, 1, 0, 1));
+	//
+	//m_physicsScene->addActor(ball1);
+	//m_physicsScene->addActor(ball2);
+	//
+	//ball1->applyForceToActor(ball2, vec2(10, 0));
+	////
+	//// turn off gravity
+	//m_physicsScene->setGravity(vec2(0, 0));
+	//
+	//Sphere* ball1B = new Sphere(vec2(-50, 10), vec2(0), 4.0f, 4, vec4(1, 0, 0, 1));
+	//Sphere* ball2B = new Sphere(vec2(+50, 10), vec2(0), 4.0f, 4, vec4(0, 1, 0, 1));
+	//
+	//m_physicsScene->addActor(ball1B);
+	//m_physicsScene->addActor(ball2B);
+	//
+	//ball1B->applyForce(vec2(30, 0));
+	//ball2B->applyForce(vec2(-15, 0));
+	//
+	// simulate a simple rocket motor
+	// Finally, you can simulate a simple rocket motor.
+	// Create a sphere in the centre of the screen, this is the rocket. Set gravity to zero.
+	m_physicsScene->setGravity(glm::vec2(0, 0));   // zero gravity
+	m_physicsScene->setTimeStep(0.01f);            // timestep
+	float rocketMass = 4.0f;
+	Sphere* ballRocket = new Sphere(vec2(0, 0), vec2(0, 1), rocketMass, 4, vec4(0, 1, 0, 1));
+	m_physicsScene->addActor(ballRocket);
+	//
 	return true;
 }
 
@@ -78,6 +118,20 @@ void PhysicsApp::update(float deltaTime) {
 	aie::Input* input = aie::Input::getInstance();
 
 	aie::Gizmos::clear();
+
+	// how to access ballRocket? Need to create ballExhaust
+	// In the update function, at time intervals, you need to:
+	// 1. Reduce the mass of the rocket by M to simulate fuel being used
+	// 2. Create a new sphere of mass M next to the rocket to simulate an exhaust gas particle(ensuring that the two spheres won’t collide – in fact, this simulation will work better if you turn off collision detection altogether)
+	// 3. Use applyForceToActor() to apply force to the exhaust gas from the rocket(make sure it is in the correct direction)
+	// 4. Repeat until all the mass has been used up
+
+	float exhaustMass = 0.04f;
+	while (rocketMass >= exhaustMass) {
+		rocketMass -= exhaustMass;
+		Sphere* ballExhaust = new Sphere(vec2(0, -5), vec2(0, -10), exhaustMass, 1, vec4(0, 1, 1, 1));
+		m_physicsScene->addActor(ballExhaust);
+	}
 
 	m_physicsScene->update(deltaTime);
 	m_physicsScene->draw();

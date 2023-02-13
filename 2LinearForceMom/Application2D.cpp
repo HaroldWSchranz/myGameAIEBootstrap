@@ -3,7 +3,7 @@
 #include "Font.h"
 #include "Input.h"
 #include "Gizmos.h"
-#include  <glm\ext.hpp>
+using namespace glm;
 
 PhysicsApp::PhysicsApp() {
 
@@ -32,7 +32,41 @@ bool PhysicsApp::startup() {
 	m_font = new aie::Font("./font/consolas.ttf", 32);
 
 	m_physicsScene = new PhysicsScene();
+	//m_physicsScene->setGravity(glm::vec2(0, 0));   // Newton's 1st Law:    zero gravity: setGravity(glm::vec2(0, 0));
+	m_physicsScene->setGravity(glm::vec2(0, -10)); // Newton's 2nd Law: nonzero gravity: setGravity(glm::vec2(0, -10));
 	m_physicsScene->setTimeStep(0.01f);
+
+	Sphere* ball;
+	ball = new Sphere(glm::vec2(-80, 0), glm::vec2(10, 30), 3.0f, 4, glm::vec4(1, 0, 0, 1));
+	m_physicsScene->addActor(ball);
+	//
+	// Zero gravity
+	m_physicsScene->setGravity(vec2(0, 0));  // turn off gravity
+
+	Sphere* ball1 = new Sphere(vec2(-4, 0), vec2(0, 0), 4.0f, 4, vec4(1, 0, 0, 1));
+	Sphere* ball2 = new Sphere(vec2(4, 0), vec2(0, 0), 4.0f, 4, vec4(0, 1, 0, 1));
+
+	m_physicsScene->addActor(ball1);
+	m_physicsScene->addActor(ball2);
+
+	ball1->applyForceToActor(ball2, vec2(10, 0));
+	//
+	// turn off gravity
+	m_physicsScene->setGravity(vec2(0, 0));
+
+	Sphere* ball1B = new Sphere(vec2(-50, 10), vec2(0), 4.0f, 4, vec4(1, 0, 0, 1));
+	Sphere* ball2B = new Sphere(vec2(+50, 10), vec2(0), 4.0f, 4, vec4(0, 1, 0, 1));
+
+	m_physicsScene->addActor(ball1B);
+	m_physicsScene->addActor(ball2B);
+
+	ball1B->applyForce(vec2(30, 0));
+	ball2B->applyForce(vec2(-15, 0));
+	//
+	// simulate a simple rocket motor
+	Sphere* ballRocket = new Sphere(vec2(0, -10), vec2(0), 4.0f, 4, vec4(0, 1, 0, 1));
+
+	//
 	return true;
 }
 
