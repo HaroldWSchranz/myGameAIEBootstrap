@@ -15,9 +15,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project3D", "Project3D\Proj
 		{AF59BB0B-E059-4773-83DC-728A949647DA} = {AF59BB0B-E059-4773-83DC-728A949647DA}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FixedTimestepTutorial", "FixedTimestepTutorial\FixedTimestepTutorial.vcxproj", "{E9727BA6-8103-4155-BAB1-6B74047A6BB7}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1FixedTimestepTutorial", "FixedTimestepTutorial\FixedTimestepTutorial.vcxproj", "{E9727BA6-8103-4155-BAB1-6B74047A6BB7}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project2DTinker", "Project2DTinker\Project2DTinker.vcxproj", "{AFA93C0B-405D-42C2-89F3-811D1A7BC7EF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project2DBalls", "Project2DBalls\Project2DBalls.vcxproj", "{FCAEE833-6407-4A7E-9BF4-C59027843396}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +69,14 @@ Global
 		{AFA93C0B-405D-42C2-89F3-811D1A7BC7EF}.Release|x64.Build.0 = Release|x64
 		{AFA93C0B-405D-42C2-89F3-811D1A7BC7EF}.Release|x86.ActiveCfg = Release|Win32
 		{AFA93C0B-405D-42C2-89F3-811D1A7BC7EF}.Release|x86.Build.0 = Release|Win32
+		{FCAEE833-6407-4A7E-9BF4-C59027843396}.Debug|x64.ActiveCfg = Debug|x64
+		{FCAEE833-6407-4A7E-9BF4-C59027843396}.Debug|x64.Build.0 = Debug|x64
+		{FCAEE833-6407-4A7E-9BF4-C59027843396}.Debug|x86.ActiveCfg = Debug|Win32
+		{FCAEE833-6407-4A7E-9BF4-C59027843396}.Debug|x86.Build.0 = Debug|Win32
+		{FCAEE833-6407-4A7E-9BF4-C59027843396}.Release|x64.ActiveCfg = Release|x64
+		{FCAEE833-6407-4A7E-9BF4-C59027843396}.Release|x64.Build.0 = Release|x64
+		{FCAEE833-6407-4A7E-9BF4-C59027843396}.Release|x86.ActiveCfg = Release|Win32
+		{FCAEE833-6407-4A7E-9BF4-C59027843396}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
