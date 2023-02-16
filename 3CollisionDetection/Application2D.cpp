@@ -32,19 +32,17 @@ bool PhysicsApp::startup() {
 	m_font = new aie::Font("./font/consolas.ttf", 32);
 
 	m_physicsScene = new PhysicsScene();
-	//m_physicsScene->setGravity(glm::vec2(0, 0));   // Newton's 1st Law:    zero gravity: setGravity(glm::vec2(0, 0));
-	m_physicsScene->setGravity(glm::vec2(0, -10)); // Newton's 2nd Law: nonzero gravity: setGravity(glm::vec2(0, -10));
+	//m_physicsScene->setGravity(glm::vec2(0, 0)); // zero gravity: setGravity(glm::vec2(0, 0));
+	m_physicsScene->setGravity(glm::vec2(0, -10)); //  nonzero gravity: setGravity(glm::vec2(0, -10));
 	m_physicsScene->setTimeStep(0.01f);
 
 	Sphere* ball;
 	ball = new Sphere(glm::vec2(0, 30), glm::vec2(0, 0), 3.0f, 4, glm::vec4(1, 0, 0, 1));
 	m_physicsScene->addActor(ball);
-	//
+	
 	Plane* plane;
 	plane = new Plane(glm::vec2(0, 1), -30);
 	//m_physicsScene->addActor(plane);
-	//
-
 
 	//
 	return true;
