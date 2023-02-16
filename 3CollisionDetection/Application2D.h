@@ -1,7 +1,7 @@
 #pragma once
-#include  <glm\vec2.hpp>
-#include  <glm\vec4.hpp>
-#include  <glm\ext.hpp>
+#include  <glm/vec2.hpp>
+#include  <glm/vec4.hpp>
+#include  <glm/ext.hpp>
 #include "Application.h"
 #include "Renderer2D.h"
 #include "PhysicsScene.h"

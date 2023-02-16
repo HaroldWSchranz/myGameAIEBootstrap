@@ -37,34 +37,14 @@ bool PhysicsApp::startup() {
 	m_physicsScene->setTimeStep(0.01f);
 
 	Sphere* ball;
-	ball = new Sphere(glm::vec2(-80, 0), glm::vec2(10, 30), 3.0f, 4, glm::vec4(1, 0, 0, 1));
+	ball = new Sphere(glm::vec2(0, 30), glm::vec2(0, 0), 3.0f, 4, glm::vec4(1, 0, 0, 1));
 	m_physicsScene->addActor(ball);
 	//
-	// Zero gravity
-	m_physicsScene->setGravity(vec2(0, 0));  // turn off gravity
-
-	Sphere* ball1 = new Sphere(vec2(-4, 0), vec2(0, 0), 4.0f, 4, vec4(1, 0, 0, 1));
-	Sphere* ball2 = new Sphere(vec2(4, 0), vec2(0, 0), 4.0f, 4, vec4(0, 1, 0, 1));
-
-	m_physicsScene->addActor(ball1);
-	m_physicsScene->addActor(ball2);
-
-	ball1->applyForceToActor(ball2, vec2(10, 0));
+	Plane* plane;
+	plane = new Plane(glm::vec2(0, 1), -30);
+	//m_physicsScene->addActor(plane);
 	//
-	// turn off gravity
-	m_physicsScene->setGravity(vec2(0, 0));
 
-	Sphere* ball1B = new Sphere(vec2(-50, 10), vec2(0), 4.0f, 4, vec4(1, 0, 0, 1));
-	Sphere* ball2B = new Sphere(vec2(+50, 10), vec2(0), 4.0f, 4, vec4(0, 1, 0, 1));
-
-	m_physicsScene->addActor(ball1B);
-	m_physicsScene->addActor(ball2B);
-
-	ball1B->applyForce(vec2(30, 0));
-	ball2B->applyForce(vec2(-15, 0));
-	//
-	// simulate a simple rocket motor
-	Sphere* ballRocket = new Sphere(vec2(0, -10), vec2(0), 4.0f, 4, vec4(0, 1, 0, 1));
 
 	//
 	return true;

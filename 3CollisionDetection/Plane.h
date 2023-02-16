@@ -8,8 +8,8 @@
 class Plane : public PhysicsObject
 {
 public:
-    Plane(glm::vec2 normal, float distance);
-    Plane(); // Do we need this default constructor?
+    Plane(glm::vec2 normal, float distance);       // what happens to this in cpp file???
+    Plane();                                       // Do we need this default constructor?
     ~Plane();
 
     virtual void fixedUpdate(glm::vec2 gravity, float timeStep);  //  Because all plane objects will be static, the fixedUpdate() function will be empty.
@@ -21,8 +21,11 @@ public:
 
     glm::vec4 m_colour = glm::vec4(1, 1, 1, 1);
 
-protected:
     glm::vec2 m_normal;
     float m_distanceToOrigin;
+
+protected:
+   // glm::vec2 m_normal;
+   // float m_distanceToOrigin;
 };
 

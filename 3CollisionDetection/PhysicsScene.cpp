@@ -1,11 +1,5 @@
 #include "PhysicsScene.h"
 
-//PhysicsScene::PhysicsScene()
-//{
-//	m_timeStep = 0.01f;
-//	m_gravity = glm::vec2(0, 0);
-//}
-
 PhysicsScene::PhysicsScene() : m_timeStep(0.01f), m_gravity(glm::vec2(0, 0))
 {
 }
@@ -26,6 +20,12 @@ static fn collisionFunctionArray[] =
     PhysicsScene::plane2Plane,     PhysicsScene::plane2Sphere,
     PhysicsScene::sphere2Plane, PhysicsScene::sphere2Sphere,
 };
+//static fn collisionFunctionArray[] =
+//{
+//   PhysicsScene::plane2Plane,  PhysicsScene::plane2Sphere,  PhysicsScene::plane2Box,
+//   PhysicsScene::sphere2Plane, PhysicsScene::sphere2Sphere, PhysicsScene::sphere2Box,
+//   PhysicsScene::box2Plane,    PhysicsScene::box2Sphere,    PhysicsScene::box2Box,
+//};
 
 void PhysicsScene::update(float dt)
 {
@@ -61,9 +61,18 @@ void PhysicsScene::update(float dt)
                 {
                     // did a collision occur?
                     collisionFunctionPtr(object1, object2);
+                }
             }
         }
     }
+}
+
+void PhysicsScene::updateGizmos()
+{
+}
+
+void PhysicsScene::debugScene()
+{
 }
 
 void PhysicsScene::draw()
@@ -95,6 +104,45 @@ bool PhysicsScene::sphere2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
     }
 }
 
+bool PhysicsScene::sphere2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
+{
+    Sphere* sphere = dynamic_cast<Sphere*>(obj1);
+    Plane* plane = dynamic_cast<Plane*>(obj2);
+    //if we are successful then test for collision
+    if (sphere != nullptr && plane != nullptr)
+    {
+        glm::vec2 collisionNormal = plane->getNormal();
+        float sphereToPlane = glm::dot(sphere->getPosition(), plane->getNormal()) - plane->getDistance();
+
+        float intersection = sphere->getRadius() - sphereToPlane;
+        float velocityOutOfPlane = glm::dot(sphere->getVelocity(), plane->getNormal());
+        if (intersection > 0 && velocityOutOfPlane < 0)
+        {
+            //set sphere velocity to zero here
+            sphere->applyForce(-sphere->getVelocity() * sphere->getMass());
+            return true;
+        }
+    }
+    return false;
+}
+
+bool PhysicsScene::plane2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
+{
+    // reverse the order of arguments, as obj1 is the plane and obj2 is the sphere
+    return sphere2Plane(obj2, obj1);
+}
+
+
+void PhysicsScene::checkForCollision()
+{
+}
+
+bool PhysicsScene::plane2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
+{
+    // We can just return false, as both planes are static and require no collision response
+    return false;
+}
+
 void PhysicsScene::addActor(PhysicsObject* actor)
 {
     m_actors.push_back(actor);
@@ -111,4 +159,14 @@ void PhysicsScene::removeActor(PhysicsObject* actor)
 
 
 
+/*
+SHAPE_COUNT is a constant defined as the number of primitive shapes our physics engine handles 
+(i.e., the number of enumerated values in the ShapeType enum).
+If we make it the last item in the shapes enumerated type then it will always be set up correctly.
+
+Be careful that SHAPE_COUNT is correct. If you have a 2x2 array of functions pointers, 
+SHAPE_COUNT will need to be 2 for this to work. If you’ve already declared BOX in your ShapeType enum, 
+it may be 3, which will cause a number of collisions to not work correctly. If this is the case, comment 
+out the enum definition for BOX for now so that SHAPE_COUNT is 2.
+*/
 

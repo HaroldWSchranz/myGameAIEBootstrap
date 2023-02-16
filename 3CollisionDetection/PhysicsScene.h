@@ -1,10 +1,13 @@
 #pragma once
 #include <glm/vec2.hpp>
+#include <glm/vec4.hpp>
+#include <glm/ext.hpp>
 #include <glm/glm.hpp>
 #include <vector>
 #include "PhysicsObject.h"
 #include "RigidBody.h"
 #include "Sphere.h"
+#include "Plane.h"
 
 class PhysicsObject;
 
@@ -41,6 +44,8 @@ protected:
 	glm::vec2 m_gravity;
 	float m_timeStep;
 	std::vector<PhysicsObject*> m_actors;
+
+	int SHAPE_COUNT = 2;		// is this right?
 };
 
 	// The sphere2Sphere function is a static function of PhysicsScene.

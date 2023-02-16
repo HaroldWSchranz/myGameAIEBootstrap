@@ -1,8 +1,10 @@
 #include "Plane.h"
 using namespace glm;
 
-Plane::Plane(glm::vec2 normal, float distance)
+Plane::Plane(glm::vec2 normal, float distance)          // what are we suppose to do with this?
 {
+    m_distanceToOrigin = distance;
+    m_normal = normal;
 }
 
 Plane::Plane() : PhysicsObject(ShapeType::PLANE) {
@@ -14,8 +16,8 @@ Plane::~Plane()
 {
 }
 
-void Plane::fixedUpdate(glm::vec2 gravity, float timeStep) //  Because all plane objects will be static, the fixedUpdate() function will be empty.
-{
+void Plane::fixedUpdate(glm::vec2 gravity, float timeStep) //  Because all plane objects will be static,
+{                                                          //   the fixedUpdate() function will be empty.
 }
 
 void Plane::draw()
@@ -28,12 +30,12 @@ void Plane::draw()
     colourFade.a = 0;
     glm::vec2 start = centerPoint + (parallel * lineSegmentLength);
     glm::vec2 end = centerPoint - (parallel * lineSegmentLength);
-    aie::Gizmos::add2DLine(start, end, colour);
-    aie::Gizmos::add2DTri(start, end, start - m_normal * 10.0f, m_colour, m_colour, colourFade);
-    aie::Gizmos::add2DTri(end, end - m_normal * 10.0f, start - m_normal * 10.0f, m_colour, colourFade, colourFade);
+    aie::Gizmos::add2DLine(start, end, m_colour);
+    //aie::Gizmos::add2DTri(start, end, start - m_normal * 10.0f, m_colour, m_colour, colourFade);
+    //aie::Gizmos::add2DTri(end, end - m_normal * 10.0f, start - m_normal * 10.0f, m_colour, colourFade, colourFade);
 }
 
-void Plane::resetPosition()
+void Plane::resetPosition()  // What are we supposed to do with this???
 {
 }
 

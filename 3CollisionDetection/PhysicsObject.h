@@ -2,10 +2,15 @@
 #include <glm/vec2.hpp>
 #include <vector>
 
+//enum ShapeType {
+//    PLANE = 0,
+//    SPHERE,
+//    BOX
+//};
+
 enum ShapeType {
     PLANE = 0,
-    SPHERE,
-    BOX
+    SPHERE
 };
 
 class PhysicsObject
@@ -21,6 +26,10 @@ public:
     virtual void fixedUpdate(glm::vec2 gravity, float timeStep) = 0;  // PhysicsObject is a pure abstract base class.
     virtual void draw() = 0;
     virtual void resetPosition() {};
+
+    ShapeType getShapeID() const {
+        return m_shapeID;
+    }
 
 protected:
     ShapeType m_shapeID;
