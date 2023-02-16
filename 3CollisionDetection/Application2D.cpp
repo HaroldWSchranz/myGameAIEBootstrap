@@ -42,7 +42,7 @@ bool PhysicsApp::startup() {
 	
 	Plane* plane;
 	plane = new Plane(glm::vec2(0, 1), -30);
-	//m_physicsScene->addActor(plane);
+	m_physicsScene->addActor(plane);
 
 	//
 	return true;
