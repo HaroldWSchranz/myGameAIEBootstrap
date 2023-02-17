@@ -1,7 +1,7 @@
 #include "Plane.h"
 using namespace glm;
 
-Plane::Plane(glm::vec2 normal, float distance)          // what are we suppose to do with this?
+Plane::Plane(glm::vec2 normal, float distance) : PhysicsObject(ShapeType::PLANE)      // what are we suppose to do with this?
 {
     m_distanceToOrigin = distance;
     m_normal = normal;

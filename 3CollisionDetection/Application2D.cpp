@@ -32,17 +32,35 @@ bool PhysicsApp::startup() {
 	m_font = new aie::Font("./font/consolas.ttf", 32);
 
 	m_physicsScene = new PhysicsScene();
-	//m_physicsScene->setGravity(glm::vec2(0, 0)); // zero gravity: setGravity(glm::vec2(0, 0));
-	m_physicsScene->setGravity(glm::vec2(0, -10)); //  nonzero gravity: setGravity(glm::vec2(0, -10));
-	m_physicsScene->setTimeStep(0.01f);
+	////m_physicsScene->setGravity(glm::vec2(0, 0)); // zero gravity: setGravity(glm::vec2(0, 0));
+	//m_physicsScene->setGravity(glm::vec2(0, -10)); //  nonzero gravity: setGravity(glm::vec2(0, -10));
+	//m_physicsScene->setTimeStep(0.01f);
+	//
+	//Sphere* ball;
+	//ball = new Sphere(glm::vec2(0, 30), glm::vec2(0, 0), 3.0f, 4, glm::vec4(1, 0, 0, 1));
+	//m_physicsScene->addActor(ball);
+	//
+	//Plane* plane;
+	//plane = new Plane(glm::vec2(0, 1), -30);
+	//m_physicsScene->addActor(plane);
 
-	Sphere* ball;
-	ball = new Sphere(glm::vec2(0, 30), glm::vec2(0, 0), 3.0f, 4, glm::vec4(1, 0, 0, 1));
-	m_physicsScene->addActor(ball);
-	
-	Plane* plane;
-	plane = new Plane(glm::vec2(0, 1), -30);
+
+	m_physicsScene->setGravity(vec2(0, -9.82f));
+
+	Sphere* ball1 = new Sphere(vec2(-40, 20), vec2(0), 4.0f, 4, vec4(1, 0, 0, 1));
+	Sphere* ball2 = new Sphere(vec2(-10, 30), vec2(0), 4.0f, 4, vec4(0, 1, 0, 1));
+	Sphere* ball3 = new Sphere(vec2(10, 40), vec2(0), 4.0f, 4, vec4(1, 0, 0, 1));
+	Sphere* ball4 = new Sphere(vec2(40, 50), vec2(0), 4.0f, 4, vec4(0, 1, 0, 1));
+
+	Plane* plane = new Plane(vec2(0, 1), -30);
+
+	m_physicsScene->addActor(ball1);
+	m_physicsScene->addActor(ball2);
+	m_physicsScene->addActor(ball3);
+	m_physicsScene->addActor(ball4);
+
 	m_physicsScene->addActor(plane);
+
 
 	//
 	return true;
