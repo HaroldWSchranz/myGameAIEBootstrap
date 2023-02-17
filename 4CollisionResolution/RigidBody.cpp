@@ -72,3 +72,42 @@ void Rigidbody::applyForceToActor(Rigidbody* actor2, glm::vec2 force)
 	actor2->applyForce(force);
 	this->applyForce(-force);
 }
+
+void Rigidbody::resolveCollision(Rigidbody* actor2)
+{
+	glm::vec2 normal = glm::normalize(actor2->getPosition() - m_position); // calculate the collision normal of the plane along which the collision occurs.
+	glm::vec2 relativeVelocity = actor2->getVelocity() - m_velocity;       // the relative velocity between the two objects.
+
+	float elasticity = 1; // a coefficient of elasticity(e) of 1 means that no energy will be lost during the collision.
+	float j = glm::dot(-(1 + elasticity) * (relativeVelocity), normal) /
+		((1 / m_mass) + (1 / actor2->getMass()));
+
+	glm::vec2 force = normal * j;
+
+	applyForceToActor(actor2, -force);
+}
+
+
+/*
+The line of code that calculates j (the impulse magnitude) is a bit long, but simply reflects the
+formula presented earlier.
+
+After calculating j, we multiply it by the collision normal (n). This gives us the force to apply to each
+object. This is done by calling the applyForceToActor() function we’ve previously written. (If you
+don’t have this function an explanation, if not the code, is given in the tutorial for Linear Force and
+Momentum.)
+
+The applyForceToActor() function applies the negative force to this actor, and the positive force to
+actor2 (thus implementing the “equal and opposite” part of Newton’s third law).
+We now have a collision resolution function that we can use to modify the velocities of the objects
+involved in a collision.
+
+In the next tutorial we’ll cover how we can integrate this function into our exiting collision detection
+code, bringing the two systems together.
+
+For now, explore the references and any web resources you find that explain similar approaches to
+collision resolution. Are there any improvements you can make to the function we just wrote?
+
+Next Tutorial:
+Collision Resolution – Sphere to Sphere in Collision Response and Friction section
+*/

@@ -29,6 +29,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3CollisionDetection", "3Col
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project2DTinker", "Project2DTinker\Project2DTinker.vcxproj", "{AFA93C0B-405D-42C2-89F3-811D1A7BC7EF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "4CollisionResolution", "4CollisionResolution\4CollisionResolution.vcxproj", "{718ED60E-AFA9-424E-9C19-5C471E7610B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -117,6 +119,14 @@ Global
 		{AFA93C0B-405D-42C2-89F3-811D1A7BC7EF}.Release|x64.Build.0 = Release|x64
 		{AFA93C0B-405D-42C2-89F3-811D1A7BC7EF}.Release|x86.ActiveCfg = Release|Win32
 		{AFA93C0B-405D-42C2-89F3-811D1A7BC7EF}.Release|x86.Build.0 = Release|Win32
+		{718ED60E-AFA9-424E-9C19-5C471E7610B3}.Debug|x64.ActiveCfg = Debug|x64
+		{718ED60E-AFA9-424E-9C19-5C471E7610B3}.Debug|x64.Build.0 = Debug|x64
+		{718ED60E-AFA9-424E-9C19-5C471E7610B3}.Debug|x86.ActiveCfg = Debug|Win32
+		{718ED60E-AFA9-424E-9C19-5C471E7610B3}.Debug|x86.Build.0 = Debug|Win32
+		{718ED60E-AFA9-424E-9C19-5C471E7610B3}.Release|x64.ActiveCfg = Release|x64
+		{718ED60E-AFA9-424E-9C19-5C471E7610B3}.Release|x64.Build.0 = Release|x64
+		{718ED60E-AFA9-424E-9C19-5C471E7610B3}.Release|x86.ActiveCfg = Release|Win32
+		{718ED60E-AFA9-424E-9C19-5C471E7610B3}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
