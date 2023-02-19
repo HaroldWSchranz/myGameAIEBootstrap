@@ -95,9 +95,14 @@ bool PhysicsScene::sphere2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
         // You can calculate the distance between the two centres manually, or use the helper function glm::distance and pass the sphere centers in.
         // Compare this distance to the sum of the radii to determine whether a collision has taken place.
         if (glm::distance(sphere1->getPosition(), sphere2->getPosition()) <= sphere1->getRadius() + sphere2->getRadius()) {
-            // reverse forces (= m_mass * m_velocity per timestep) to stop spheres dead
-            sphere1->applyForce(-sphere1->getMass() * sphere1->getVelocity());
-            sphere2->applyForce(-sphere2->getMass() * sphere2->getVelocity());
+            // reverse forces (= m_mass * m_velocity per timestep) to stop spheres dead (MY WAY without setVelocity):
+            //sphere1->applyForce(-sphere1->getMass() * sphere1->getVelocity());
+            //sphere2->applyForce(-sphere2->getMass() * sphere2->getVelocity());
+            // for now, just stop the spheres using setVelocity (which I had to invent in RigidBody.h):
+            //sphere1->setVelocity(glm::vec2(0, 0));
+            //sphere2->setVelocity(glm::vec2(0, 0));
+            // Call void Rigidbody::resolveCollision(Rigidbody* actor2) on sphere1 with sphere2 as argument
+            sphere1->resolveCollision(sphere2);
             return true;
         }
         return false;
@@ -170,3 +175,29 @@ it may be 3, which will cause a number of collisions to not work correctly. If t
 out the enum definition for BOX for now so that SHAPE_COUNT is 2.
 */
 
+/*
+Sphere - to - Sphere Collision :
+In the Collision Detection tutorial we implemented the sphere2Sphere() function inside the
+PhysicsScene class to detect collisions between two spheres.
+Because we had yet to write the collision response function, when two spheres collided we simply
+set the velocity of both spheres to(0, 0).
+
+bool PhysicsScene::sphere2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
+{
+    Sphere* sphere1 = dynamic_cast<Sphere*>(obj1);
+    Sphere* sphere2 = dynamic_cast<Sphere*>(obj2);
+    if (sphere1 != nullptr && sphere2 != nullptr) {
+        vec2 dist = sphere1->getPosition() - sphere2->getPosition();
+        if (glm::length(dist) < sphere1->getRadius() + sphere2->getRadius()) {
+            // collision
+            // for now, just stop the spheres
+            sphere1->setVelocity(vec2(0, 0));
+            sphere2->setVelocity(vec2(0, 0));
+            return true;
+        }
+    }
+    return false;
+}
+
+
+*/

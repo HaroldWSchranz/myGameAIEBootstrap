@@ -75,13 +75,14 @@ with the balls on the left and right carrying all the momentum as they bounce ba
 */
 	m_physicsScene->setGravity(vec2(0, 0));
 
-	Sphere* ball1 = new Sphere(vec2(-16, 20), vec2(10,0), 4.0f, 4, vec4(1, 0, 0, 1));
+	Sphere* ball1 = new Sphere(vec2(-16, 20), vec2(0.1,0), 4.0f, 4, vec4(1, 0, 0, 1));
 	Sphere* ball2 = new Sphere(vec2(-8, 20), vec2(0), 4.0f, 4, vec4(0, 1, 0, 1));
 	Sphere* ball3 = new Sphere(vec2(0, 20), vec2(0), 4.0f, 4, vec4(1, 0, 0, 1));
 	Sphere* ball4 = new Sphere(vec2(8, 20), vec2(0), 4.0f, 4, vec4(1, 0, 0, 1));
 	Sphere* ball5 = new Sphere(vec2(16, 20), vec2(0), 4.0f, 4, vec4(0, 1, 0, 1));
 
-	Plane* plane = new Plane(vec2(0, 1), -30);
+	Plane* plane1 = new Plane(vec2(1, 0), -80);
+	Plane* plane2 = new Plane(vec2(-1, 0), +80);
 
 	m_physicsScene->addActor(ball1);
 	m_physicsScene->addActor(ball2);
@@ -89,7 +90,9 @@ with the balls on the left and right carrying all the momentum as they bounce ba
 	m_physicsScene->addActor(ball4);
 	m_physicsScene->addActor(ball5);
 
-	m_physicsScene->addActor(plane);
+	m_physicsScene->addActor(plane1);
+	m_physicsScene->addActor(plane2);
+
 
 /*
 Asymmetrical Newton’s Cradle

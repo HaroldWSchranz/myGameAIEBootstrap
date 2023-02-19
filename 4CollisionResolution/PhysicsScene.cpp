@@ -95,9 +95,12 @@ bool PhysicsScene::sphere2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
         // You can calculate the distance between the two centres manually, or use the helper function glm::distance and pass the sphere centers in.
         // Compare this distance to the sum of the radii to determine whether a collision has taken place.
         if (glm::distance(sphere1->getPosition(), sphere2->getPosition()) <= sphere1->getRadius() + sphere2->getRadius()) {
-            // reverse forces (= m_mass * m_velocity per timestep) to stop spheres dead
-            sphere1->applyForce(-sphere1->getMass() * sphere1->getVelocity());
-            sphere2->applyForce(-sphere2->getMass() * sphere2->getVelocity());
+            // reverse forces (= m_mass * m_velocity per timestep) to stop spheres dead (MY WAY without setVelocity):
+            //sphere1->applyForce(-sphere1->getMass() * sphere1->getVelocity());
+            //sphere2->applyForce(-sphere2->getMass() * sphere2->getVelocity());
+            // for now, just stop the spheres using setVelocity (which I had to invent in RigidBody.h):
+            sphere1->setVelocity(glm::vec2(0, 0));
+            sphere2->setVelocity(glm::vec2(0, 0));
             return true;
         }
         return false;
