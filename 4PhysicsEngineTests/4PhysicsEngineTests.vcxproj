@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{6BAA5E57-BA2E-4A1B-8A3F-B32998C87E08}</ProjectGuid>
+    <ProjectGuid>{BB2071A4-1EE4-4A97-8DCC-E198B2626B42}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Project2D</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
