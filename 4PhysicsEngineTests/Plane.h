@@ -19,6 +19,7 @@ public:
     glm::vec2 getNormal() { return m_normal; }
     float getDistance() { return m_distanceToOrigin; }
 
+    glm::vec4 m_colour_line = glm::vec4(0, 0, 1, 1);
     glm::vec4 m_colour = glm::vec4(1, 1, 1, 1);
 
     glm::vec2 m_normal;

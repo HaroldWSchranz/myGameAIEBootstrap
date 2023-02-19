@@ -44,7 +44,7 @@ bool PhysicsApp::startup() {
 	//plane = new Plane(glm::vec2(0, 1), -30);
 	//m_physicsScene->addActor(plane);
 
-
+	//  DROPPING BALLS ON A PLANE:
 	m_physicsScene->setGravity(vec2(0, -9.82f));
 
 	Sphere* ball1 = new Sphere(vec2(-40, 20), vec2(0), 4.0f, 4, vec4(1, 0, 0, 1));
@@ -61,8 +61,47 @@ bool PhysicsApp::startup() {
 
 	m_physicsScene->addActor(plane);
 
-
 	//
+
+
+	/*
+ Tests to perform with your Physics Engine
+ (THIS MIGHT DEPEND ON: Tutorial – Collision Response: Sphere to Sphere)
+Once you have sphere to sphere collisions and sphere to plane collisions,
+you should try the following situations to verify your code:
+
+Newton’s Cradle
+
+Place two vertical planes as walls, and line up 5 perfectly elastic spheres touching each other.
+Give the first one a velocity along the x-axis. You should observe Newton’s Cradle behaviour,
+with the balls on the left and right carrying all the momentum as they bounce back and forth into each other.
+
+	m_physicsScene->setGravity(vec2(0, 0));
+
+	Sphere* ball1 = new Sphere(vec2(-16, 20), vec2(10, 0), 4.0f, 4, vec4(1, 0, 0, 1));
+	Sphere* ball2 = new Sphere(vec2(-8, 20), vec2(0), 4.0f, 4, vec4(0, 1, 0, 1));
+	Sphere* ball3 = new Sphere(vec2(0, 20), vec2(0), 4.0f, 4, vec4(1, 0, 0, 1));
+	Sphere* ball4 = new Sphere(vec2(8, 20), vec2(0), 4.0f, 4, vec4(1, 0, 0, 1));
+	Sphere* ball5 = new Sphere(vec2(16, 20), vec2(0), 4.0f, 4, vec4(0, 1, 0, 1));
+
+	Plane* plane = new Plane(vec2(0, 1), -30);
+
+	m_physicsScene->addActor(ball1);
+	m_physicsScene->addActor(ball2);
+	m_physicsScene->addActor(ball3);
+	m_physicsScene->addActor(ball4);
+	m_physicsScene->addActor(ball5);
+
+	m_physicsScene->addActor(plane);
+
+	/*
+	Asymmetrical Newton’s Cradle
+
+	Make one of the balls heavier (and maybe a different colour?) than the others. See what happens,
+	and justify the behaviour to yourself in physical terms.
+	*/
+	//
+
 	return true;
 }
 

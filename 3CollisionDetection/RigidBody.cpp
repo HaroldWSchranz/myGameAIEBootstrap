@@ -37,19 +37,22 @@ Rigidbody::~Rigidbody()
 // After applying gravity as a force, we add the updated vector to the actor’s position to get the new position of the actor.
 // Why does it update position, then apply force (Integrator method?)
 // Whether we apply the force of gravity before or after updating the position, we introduce a systematic error into our physics simulation. 
-// For now its preferable to apply gravity afterwards. 
+// For now its preferable to apply gravity afterwards.
+// 
 // CORRECT ORDER: update position then apply gravity
 void Rigidbody::fixedUpdate(glm::vec2 gravity, float timeStep)
 {
 	m_position += m_velocity * timeStep;
 	applyForce(gravity * m_mass * timeStep);
 }
+//
 // REVERSED ORDER: applt gravity then update position
 //void Rigidbody::fixedUpdate(glm::vec2 gravity, float timeStep)
 //{
 //	applyForce(gravity * m_mass * timeStep);
 //	m_position += m_velocity * timeStep;
 //}
+
 /*
 Watch closely, and you’ll see the balls sink slowly into the plane.
 
