@@ -46,11 +46,17 @@ bool PhysicsApp::startup() {
 
 	//  DROPPING BALLS ON A PLANE:
 	m_physicsScene->setGravity(vec2(0, -9.82f));
+	m_physicsScene->setTimeStep(0.01f);
 
-	Sphere* ball1 = new Sphere(vec2(-40, 20), vec2(0), 4.0f, 4, vec4(1, 0, 0, 1));
-	Sphere* ball2 = new Sphere(vec2(-10, 30), vec2(0), 4.0f, 4, vec4(0, 1, 0, 1));
-	Sphere* ball3 = new Sphere(vec2(10, 40), vec2(0), 4.0f, 4, vec4(1, 0, 0, 1));
-	Sphere* ball4 = new Sphere(vec2(40, 50), vec2(0), 4.0f, 4, vec4(0, 1, 0, 1));
+	Sphere* ball1 = new Sphere(vec2(-40, 20), vec2(0,0), 4.0f, 4, vec4(0.25, 0.25, 0.25, 1));
+	Sphere* ball2 = new Sphere(vec2(-10, 30), vec2(0,0), 4.0f, 4, vec4(1, 1, 1, 1));
+	Sphere* ball3 = new Sphere(vec2( 10, 40), vec2(0,0), 4.0f, 4, vec4(1, 1, 0, 1));
+	Sphere* ball4 = new Sphere(vec2( 40, 50), vec2(0,0), 4.0f, 4, vec4(1, 0, 1, 1));
+
+	Sphere* ball5 = new Sphere(vec2(-40,  5), vec2(0, 30), 4.0f, 4, vec4(1, 0, 0, 1));
+	Sphere* ball6 = new Sphere(vec2(-10, 15), vec2(0, 25), 4.0f, 4, vec4(0, 1, 1, 1));
+	Sphere* ball7 = new Sphere(vec2( 10, 25), vec2(0, 20), 4.0f, 4, vec4(0, 1, 0, 1));
+	Sphere* ball8 = new Sphere(vec2( 40, 35), vec2(0, 15), 4.0f, 4, vec4(0, 0, 1, 1));
 
 	Plane* plane = new Plane(vec2(0, 1), -30);
 
@@ -58,11 +64,13 @@ bool PhysicsApp::startup() {
 	m_physicsScene->addActor(ball2);
 	m_physicsScene->addActor(ball3);
 	m_physicsScene->addActor(ball4);
-
+	m_physicsScene->addActor(ball5);
+	m_physicsScene->addActor(ball6);
+	m_physicsScene->addActor(ball7);
+	m_physicsScene->addActor(ball8);
 	m_physicsScene->addActor(plane);
 
 	//
-
 
 	/*
  Tests to perform with your Physics Engine

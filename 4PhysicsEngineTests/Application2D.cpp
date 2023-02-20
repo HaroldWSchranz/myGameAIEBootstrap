@@ -74,21 +74,30 @@ Give the first one a velocity along the x-axis. You should observe Newton’s Crad
 with the balls on the left and right carrying all the momentum as they bounce back and forth into each other.
 */
 	m_physicsScene->setGravity(vec2(0, 0));
+	m_physicsScene->setTimeStep(0.001f);
 
-	Sphere* ball1 = new Sphere(vec2(-16, 20), vec2(0.1,0), 4.0f, 4, vec4(1, 0, 0, 1));
-	Sphere* ball2 = new Sphere(vec2(-8, 20), vec2(0), 4.0f, 4, vec4(0, 1, 0, 1));
-	Sphere* ball3 = new Sphere(vec2(0, 20), vec2(0), 4.0f, 4, vec4(1, 0, 0, 1));
-	Sphere* ball4 = new Sphere(vec2(8, 20), vec2(0), 4.0f, 4, vec4(1, 0, 0, 1));
-	Sphere* ball5 = new Sphere(vec2(16, 20), vec2(0), 4.0f, 4, vec4(0, 1, 0, 1));
+	Sphere* ball0 = new Sphere(vec2(-70, 0), vec2(0, 0), 400.0f, 8, vec4(1, 1, 1, 1));
 
-	Plane* plane1 = new Plane(vec2(1, 0), -80);
-	Plane* plane2 = new Plane(vec2(-1, 0), +80);
+	Sphere* ball1 = new Sphere(vec2(-50, 0),  vec2(32,0),  4.0f, 4, vec4(1, 0, 0, 1));
+	Sphere* ball2 = new Sphere(vec2(-10, 0),  vec2( 0,0),  4.0f, 4, vec4(0, 1, 0, 1));
+	Sphere* ball3 = new Sphere(vec2(  0, 0),  vec2( 0,0),  4.0f, 4, vec4(0, 0, 1, 1));
+	Sphere* ball4 = new Sphere(vec2( 10,  0), vec2( 0,0),  4.0f, 4, vec4(1, 1, 0, 1));
+	Sphere* ball5 = new Sphere(vec2( 20,  0), vec2( 0,0),  4.0f, 4, vec4(1, 0, 1, 1));
+
+	Sphere* ball6 = new Sphere(vec2(+70, 0),  vec2(0, 0), 400.0f, 8, vec4(1, 1, 1, 1));
+
+	Plane* plane1 = new Plane(vec2(-1, 0), -90);
+	Plane* plane2 = new Plane(vec2(+1, 0), -90);
+
+	m_physicsScene->addActor(ball0);
 
 	m_physicsScene->addActor(ball1);
 	m_physicsScene->addActor(ball2);
 	m_physicsScene->addActor(ball3);
 	m_physicsScene->addActor(ball4);
 	m_physicsScene->addActor(ball5);
+
+	m_physicsScene->addActor(ball6);
 
 	m_physicsScene->addActor(plane1);
 	m_physicsScene->addActor(plane2);
@@ -100,7 +109,34 @@ Asymmetrical Newton’s Cradle
 Make one of the balls heavier (and maybe a different colour?) than the others. See what happens, 
 and justify the behaviour to yourself in physical terms.
 */
-
+	//m_physicsScene->setGravity(vec2(0, 0));
+	//m_physicsScene->setTimeStep(0.001f);
+	//
+	//Sphere* ball0 = new Sphere(vec2(-70, 0), vec2(0, 0), 400.0f, 8, vec4(1, 1, 1, 1));
+	//
+	//Sphere* ball1 = new Sphere(vec2(-50, 0), vec2(32, 0), 4.0f, 4, vec4(1, 0, 0, 1));
+	//Sphere* ball2 = new Sphere(vec2(-10, 0), vec2(0, 0), 4.0f, 4, vec4(0, 1, 0, 1));
+	//Sphere* ball3 = new Sphere(vec2(0, 0), vec2(0, 0), 4000.0f, 6, vec4(0, 0, 1, 1));
+	//Sphere* ball4 = new Sphere(vec2(10, 0), vec2(0, 0), 4.0f, 4, vec4(1, 1, 0, 1));
+	//Sphere* ball5 = new Sphere(vec2(20, 0), vec2(0, 0), 4.0f, 4, vec4(1, 0, 1, 1));
+	//
+	//Sphere* ball6 = new Sphere(vec2(+70, 0), vec2(0, 0), 400.0f, 8, vec4(1, 1, 1, 1));
+	//
+	//Plane* plane1 = new Plane(vec2(-1, 0), -90);
+	//Plane* plane2 = new Plane(vec2(+1, 0), -90);
+	//
+	//m_physicsScene->addActor(ball0);
+	//
+	//m_physicsScene->addActor(ball1);
+	//m_physicsScene->addActor(ball2);
+	//m_physicsScene->addActor(ball3);
+	//m_physicsScene->addActor(ball4);
+	//m_physicsScene->addActor(ball5);
+	//
+	//m_physicsScene->addActor(ball6);
+	//
+	//m_physicsScene->addActor(plane1);
+	//m_physicsScene->addActor(plane2);
 
 	//
 	return true;
