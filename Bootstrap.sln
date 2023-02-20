@@ -35,6 +35,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "5CollisionResolution", "5Co
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "4PhysicsEngineTests", "4PhysicsEngineTests\4PhysicsEngineTests.vcxproj", "{BB2071A4-1EE4-4A97-8DCC-E198B2626B42}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "6CollisionResponse", "6CollisionResponse\6CollisionResponse.vcxproj", "{2E85D6A4-C5D3-4742-8767-EB465F5320A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -147,6 +149,14 @@ Global
 		{BB2071A4-1EE4-4A97-8DCC-E198B2626B42}.Release|x64.Build.0 = Release|x64
 		{BB2071A4-1EE4-4A97-8DCC-E198B2626B42}.Release|x86.ActiveCfg = Release|Win32
 		{BB2071A4-1EE4-4A97-8DCC-E198B2626B42}.Release|x86.Build.0 = Release|Win32
+		{2E85D6A4-C5D3-4742-8767-EB465F5320A1}.Debug|x64.ActiveCfg = Debug|x64
+		{2E85D6A4-C5D3-4742-8767-EB465F5320A1}.Debug|x64.Build.0 = Debug|x64
+		{2E85D6A4-C5D3-4742-8767-EB465F5320A1}.Debug|x86.ActiveCfg = Debug|Win32
+		{2E85D6A4-C5D3-4742-8767-EB465F5320A1}.Debug|x86.Build.0 = Debug|Win32
+		{2E85D6A4-C5D3-4742-8767-EB465F5320A1}.Release|x64.ActiveCfg = Release|x64
+		{2E85D6A4-C5D3-4742-8767-EB465F5320A1}.Release|x64.Build.0 = Release|x64
+		{2E85D6A4-C5D3-4742-8767-EB465F5320A1}.Release|x86.ActiveCfg = Release|Win32
+		{2E85D6A4-C5D3-4742-8767-EB465F5320A1}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
