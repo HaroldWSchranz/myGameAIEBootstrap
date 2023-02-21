@@ -86,12 +86,39 @@ void Rigidbody::applyForce(glm::vec2 force)
 {
 	m_velocity += force / m_mass;
 }
-
+/*
+c.f. https://aie.instructure.com/courses/1024/pages/physics-for-games-collision-resolution
+Tutorial - Collision Resolution - Introduction
+https://aie.instructure.com/courses/1024/files/723947/download?wrap=1
+The applyForceToActor() function applies the negative force to this actor, and the positive force to
+actor2 (thus implementing the “equal and opposite” part of Newton’s third law).
+*/
 void Rigidbody::applyForceToActor(Rigidbody* actor2, glm::vec2 force)
 {
 	actor2->applyForce(force);
 	this->applyForce(-force);
 }
+
+//void Rigidbody::resolveCollision(Rigidbody* actor2)
+//{
+//	glm::vec2 normal = glm::normalize(actor2->getPosition() - m_position); // calculate the collision normal of the plane along which the collision occurs.
+//	glm::vec2 relativeVelocity = actor2->getVelocity() - m_velocity;       // the relative velocity between the two objects.
+//
+//	float elasticity = 1; // a coefficient of elasticity(e) of 1 means that no energy will be lost during the collision.
+//	float j = glm::dot(-(1 + elasticity) * (relativeVelocity), normal) /
+//		((1 / m_mass) + (1 / actor2->getMass()));
+//
+//	glm::vec2 force = normal * j;
+//
+//	applyForceToActor(actor2, +force);
+//
+//	std::cout << "Rigidbody::resolveCollision:" << std::endl;
+//	std::cout << "normal = (" << normal.x << "," << normal.y << ")" << std::endl;
+//	std::cout << "actor2->getVelocity() = (" << actor2->getVelocity().x << "," << actor2->getVelocity().y << ")" << std::endl;
+//	std::cout << "m_velocity = (" << m_velocity.x << "," << m_velocity.y << ")" << std::endl;
+//	std::cout << "relativeVelocity = (" << relativeVelocity.x << "," << relativeVelocity.y << ")" << std::endl;
+//	std::cout << "impulse j = " << j << std::endl;
+//}
 
 void Rigidbody::resolveCollision(Rigidbody* actor2)
 {
@@ -104,7 +131,18 @@ void Rigidbody::resolveCollision(Rigidbody* actor2)
 
 	glm::vec2 force = normal * j;
 
-	applyForceToActor(actor2, +force);
+	float kePre = getKineticEnergy() + actor2->getKineticEnergy();
+
+	//applyForceToActor(actor2, -force);
+	applyForceToActor(actor2, +force);   // My version has +force
+
+	float kePost = getKineticEnergy() + actor2->getKineticEnergy();
+
+	float deltaKE = kePost - kePre;
+	float devFrac = deltaKE / kePre;
+	std::cout << "KE: Before: " << kePre << "  After: " << kePost << "  Delta: " << deltaKE << " (" << devFrac << ")" << std::endl;
+	if (deltaKE > kePost * 0.01f) 
+		std::cout << "Kinetic Energy discrepancy greater than 1% detected!!";
 
 	std::cout << "Rigidbody::resolveCollision:" << std::endl;
 	std::cout << "normal = (" << normal.x << "," << normal.y << ")" << std::endl;
@@ -113,6 +151,8 @@ void Rigidbody::resolveCollision(Rigidbody* actor2)
 	std::cout << "relativeVelocity = (" << relativeVelocity.x << "," << relativeVelocity.y << ")" << std::endl;
 	std::cout << "impulse j = " << j << std::endl;
 }
+
+
 
 
 /*

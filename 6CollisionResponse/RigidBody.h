@@ -27,6 +27,9 @@ public:
     glm::vec2 setVelocity(glm::vec2 velocity) { return m_velocity = velocity; }
     float getMass() { return m_mass; }
 
+    // Add a function to Rigidbody to calculate the kinetic energy. For now this will just be linear kinetic energy,
+    float getKineticEnergy() { return 0.5*m_mass* glm::dot(m_velocity,m_velocity); }
+
     void resolveCollision(Rigidbody* actor2);
 
 protected:

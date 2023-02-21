@@ -112,12 +112,21 @@ bool PhysicsApp::startup() {
 	
 	//Sphere::Sphere(glm::vec2 position, float inclination, float speed, float mass, float radius, glm::vec4 colour) :
 	//	Rigidbody(SPHERE, position, inclination, speed, 0, mass)
+	// COLLINEAR:
 	//Sphere* ball1 = new Sphere(vec2(0, 0), 0, 11.1, 170.f, 4, vec4(1, 1, 1, 1));
+	//Sphere* ball2 = new Sphere(vec2(8.01, 0), vec2(0, 0), 160.f, 4, vec4(0.25, 0.25, 0.25, 1));
+	// ANGLE 10 WITH ball2 on x axis:
+	//Sphere* ball1 = new Sphere(vec2(0, 0), 10, 11.1, 170.f, 4, vec4(1, 1, 1, 1));
+	//Sphere* ball2 = new Sphere(vec2(8.01, 0), vec2(0, 0), 160.f, 4, vec4(0.25, 0.25, 0.25, 1));
+	// ANGLE 10 WITH ball2 on collision normal (0.7501, 0.6613):
 	Sphere* ball1 = new Sphere(vec2(0, 0), 10, 11.1, 170.f, 4, vec4(1, 1, 1, 1));
-	Sphere* ball2 = new Sphere(vec2(8.01, 0), vec2(0, 0), 160.f, 4, vec4(0.25, 0.25, 0.25, 1));
-
+	//float eps = 0.000095;
+	float eps = 0.00009;
+	Sphere* ball2 = new Sphere(vec2(6.0008+eps, 5.2904+eps), vec2(0, 0), 160.f, 4, vec4(0.25, 0.25, 0.25, 1));
+	//Sphere* ball2 = new Sphere(vec2(6.001, 5.291), vec2(0, 0), 160.f, 4, vec4(0.25, 0.25, 0.25, 1));
 	m_physicsScene->addActor(ball1);
 	m_physicsScene->addActor(ball2);
+
 	//
 
 	/*
