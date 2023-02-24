@@ -4,7 +4,7 @@
 #include <glm/vec4.hpp>
 #include <vector>
 #include "PhysicsObject.h"
-#include "RigidBody.h"
+//#include "RigidBody.h"
 #include "Gizmos.h"
 
 class Plane : public PhysicsObject
@@ -27,7 +27,10 @@ public:
     glm::vec2 m_normal;
     float m_distanceToOrigin;
 
-    void resolveCollision(Rigidbody* actor2); // 20280222: Is this forward declaration OK?
+    //void resolveCollision(Rigidbody* actor2); // 20230222: Is this forward declaration OK?
+    void resolveCollision(class Rigidbody* actor2); // 20230224
+    //-void resolveCollision(Rigidbody * actor2); // 20280222: Is this forward declaration OK?
+    //+void resolveCollision(class Rigidbody* actor2); // 20280222: Is this forward declaration OK?
 
 protected:
    // glm::vec2 m_normal;

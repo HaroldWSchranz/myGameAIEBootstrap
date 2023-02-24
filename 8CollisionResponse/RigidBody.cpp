@@ -1,4 +1,5 @@
 #include "RigidBody.h"
+#include "PhysicsScene.h"
 #include <iostream>
 // Start by implementing the constructors, which should initialize the member variables.
 // The applyForce() function is where we apply Newton’s second law. 

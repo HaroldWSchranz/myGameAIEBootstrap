@@ -3,6 +3,8 @@
 #include "Font.h"
 #include "Input.h"
 #include "Gizmos.h"
+#include "Plane.h"
+#include "Sphere.h"
 using namespace glm;
 
 PhysicsApp::PhysicsApp() {

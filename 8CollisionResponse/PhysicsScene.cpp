@@ -1,8 +1,15 @@
 #include "PhysicsScene.h"
+#include "PhysicsObject.h"
+
+#include "Sphere.h"
+#include "Plane.h"
 
 //PhysicsScene::PhysicsScene() : m_timeStep(0.01f), m_gravity(glm::vec2(0, 0))
 //{
 //}
+
+glm::vec2 PhysicsScene::m_gravity{ 0,0 };
+
 PhysicsScene::PhysicsScene() : m_timeStep(0.01f) {
     setGravity(glm::vec2(0, 0));
 }

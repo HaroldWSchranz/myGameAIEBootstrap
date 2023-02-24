@@ -4,10 +4,10 @@
 #include <glm/ext.hpp>
 #include <glm/glm.hpp>
 #include <vector>
-#include "PhysicsObject.h"
-#include "RigidBody.h"
-#include "Sphere.h"
-#include "Plane.h"
+//#include "PhysicsObject.h"
+//#include "RigidBody.h"
+//#include "Sphere.h"
+//#include "Plane.h"
 
 class PhysicsObject;
 

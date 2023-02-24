@@ -3,7 +3,7 @@
 #include  <glm/ext.hpp>
 #include <vector>
 #include "PhysicsObject.h"
-#include "PhysicsScene.h"
+//#include "PhysicsScene.h"
 
 class Rigidbody : public PhysicsObject {
 public:
