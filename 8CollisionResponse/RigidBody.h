@@ -30,12 +30,8 @@ public:
     // Add a function to Rigidbody to calculate the kinetic energy. For now this will just be linear kinetic energy,
     float getKineticEnergy() { return 0.5*m_mass* glm::dot(m_velocity,m_velocity); }
 
-    // DOES THIS BELONG IN Rigidbody.H OR Rigidbody.CPP
-    // We can then add a getPotentialEnergy() function to Rigidbody like so :
-    float Rigidbody::getPotentialEnergy()
-    {
-        return -getMass() * glm::dot(PhysicsScene::getGravity(), getPosition());
-    }
+
+    float getPotentialEnergy();
 
     void resolveCollision(Rigidbody* actor2);
     

@@ -1,7 +1,7 @@
 #include "Sphere.h"
 #include <iostream>
 Sphere::Sphere(glm::vec2 position, glm::vec2 velocity, float mass, float radius, glm::vec4 colour) :
-    Rigidbody(SPHERE, position, velocity, 0, mass)
+    Rigidbody::Rigidbody(SPHERE, position, velocity, 0, mass)
 {
     m_radius = radius;
     m_colour = colour;
@@ -18,7 +18,7 @@ Sphere::Sphere()
 }
 
 Sphere::Sphere(glm::vec2 position, float inclination, float speed, float mass, float radius, glm::vec4 colour) :
-    Rigidbody(SPHERE, position, inclination, speed, 0, mass)
+    Rigidbody::Rigidbody(SPHERE, position, inclination, speed, 0, mass)
 {
     m_radius = radius;
     m_colour = colour;

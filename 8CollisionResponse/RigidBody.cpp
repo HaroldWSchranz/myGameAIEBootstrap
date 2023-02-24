@@ -152,7 +152,12 @@ void Rigidbody::resolveCollision(Rigidbody* actor2)
 	std::cout << "impulse j = " << j << std::endl;
 }
 
-
+// DOES THIS BELONG IN Rigidbody.H OR Rigidbody.CPP
+// We can then add a getPotentialEnergy() function to Rigidbody like so :
+float Rigidbody::getPotentialEnergy()
+{
+	return -getMass() * glm::dot(PhysicsScene::getGravity(), getPosition());
+}
 
 /*
 The line of code that calculates j (the impulse magnitude) is a bit long, but simply reflects the

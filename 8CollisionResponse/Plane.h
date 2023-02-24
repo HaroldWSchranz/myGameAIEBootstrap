@@ -3,8 +3,8 @@
 #include <glm/vec2.hpp>
 #include <glm/vec4.hpp>
 #include <vector>
-#include "RigidBody.h"
 #include "PhysicsObject.h"
+#include "RigidBody.h"
 #include "Gizmos.h"
 
 class Plane : public PhysicsObject
