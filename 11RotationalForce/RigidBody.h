@@ -25,7 +25,8 @@ public:
     //but feel free to append a glm::vec2 position argument if you wish to keep it.)
     //void applyForceToActor(Rigidbody* actor2, glm::vec2 force, glm::vec2 pos);
     //void resolveCollision(Rigidbody* actor2);
-    void resolveCollision(Rigidbody* actor2, glm::vec2 contact, glm::vec2*collisionNormal = nullptr);
+
+    void resolveCollision(Rigidbody* actor2, glm::vec2 contact, glm::vec2* collisionNormal = nullptr);
 
     glm::vec2 getPosition() { return m_position; }
     float getOrientatation() { return m_orientation; }

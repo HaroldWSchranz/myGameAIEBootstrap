@@ -5,6 +5,7 @@ Sphere::Sphere(glm::vec2 position, glm::vec2 velocity, float mass, float radius,
 {
     m_radius = radius;
     m_colour = colour;
+    m_moment = 0.5f * mass * radius * radius;
 }
 
 Sphere::~Sphere()
@@ -22,6 +23,7 @@ Sphere::Sphere(glm::vec2 position, float inclination, float speed, float mass, f
 {
     m_radius = radius;
     m_colour = colour;
+    m_moment = 0.5f * mass * radius * radius;
     //float speedx = speed * cos(glm::radians(inclination));
     //float speedy = speed * sin(glm::radians(inclination));
     //velocity = glm::vec2(speedx, speedy);

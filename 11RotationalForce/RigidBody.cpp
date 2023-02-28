@@ -97,6 +97,8 @@ void Rigidbody::applyForce(glm::vec2 force, glm::vec2 pos)
 	m_angularVelocity += (force.y * pos.x - force.x * pos.y) / getMoment();
 }
 
+
+
 /*
 c.f. https://aie.instructure.com/courses/1024/pages/physics-for-games-collision-resolution
 Tutorial - Collision Resolution - Introduction
@@ -163,10 +165,7 @@ actor2 (thus implementing the “equal and opposite” part of Newton’s third law).
 //	std::cout << "impulse j = " << j << std::endl;
 //}
 
-
-//
-void Rigidbody::resolveCollision(Rigidbody* actor2, glm::vec2 contact,
-	glm::vec2* collisionNormal)
+void Rigidbody::resolveCollision(Rigidbody* actor2, glm::vec2 contact, glm::vec2* collisionNormal)
 {
 	// find the vector between their centres, or use the provided direction
 	// of force, and make sure it's normalised
@@ -200,7 +199,6 @@ void Rigidbody::resolveCollision(Rigidbody* actor2, glm::vec2 contact,
 		actor2->applyForce(force, contact - actor2->m_position);
 	}
 }
-//
 
 
 
