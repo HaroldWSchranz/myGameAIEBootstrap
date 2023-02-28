@@ -104,12 +104,12 @@ https://aie.instructure.com/courses/1024/files/723947/download?wrap=1
 The applyForceToActor() function applies the negative force to this actor, and the positive force to
 actor2 (thus implementing the “equal and opposite” part of Newton’s third law).
 */
-void Rigidbody::applyForceToActor(Rigidbody* actor2, glm::vec2 force, glm::vec2 pos)
-{
-	actor2->applyForce(force, pos);
-	this->applyForce(-force, pos);
-}
-
+//void Rigidbody::applyForceToActor(Rigidbody* actor2, glm::vec2 force, glm::vec2 pos)
+//{
+//	actor2->applyForce(force, pos);
+//	this->applyForce(-force, pos);
+//}
+//
 //void Rigidbody::resolveCollision(Rigidbody* actor2)
 //{
 //	glm::vec2 normal = glm::normalize(actor2->getPosition() - m_position); // calculate the collision normal of the plane along which the collision occurs.

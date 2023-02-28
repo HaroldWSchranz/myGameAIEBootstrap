@@ -28,7 +28,7 @@ public:
     float m_distanceToOrigin;
 
     //void resolveCollision(Rigidbody* actor2); // 20230222: Is this forward declaration OK?
-    //void resolveCollision(class Rigidbody* actor2); // 20230224
+    void resolveCollision(class Rigidbody* actor2); // 20230224
     void resolveCollision(class Rigidbody* actor2, glm::vec2 contact); // 20230224
 
 protected:
