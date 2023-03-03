@@ -11,6 +11,12 @@ public:
 
     ~Box();
 
+    Box(glm::vec2 position, glm::vec2 velocity, float mass, float width, float height, glm::vec4 colour);
+
+    Box(glm::vec2 position, float inclination, float speed, float mass, float width, float height, glm::vec4 colour);
+
+    bool checkBoxCorners(const Box& box, glm::vec2& contact, int& numContacts, float& pen, glm::vec2& edgeNormal);
+
     void fixedUpdate(glm::vec2 gravity, float timeStep);
 
     void draw();
@@ -22,6 +28,9 @@ public:
     float getHeight() { return 2 * m_extents.y; }
 
 protected:
+    float width;
+    float height;
+
 	glm::vec2 m_extents;   // the halfedge lengths  
 	glm::vec4 m_colour;
 

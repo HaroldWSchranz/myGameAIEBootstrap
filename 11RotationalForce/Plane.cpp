@@ -1,5 +1,6 @@
 #include "Plane.h"
 #include "RigidBody.h"
+#include "Gizmos.h"
 
 #include <iostream>
 using namespace glm;

@@ -201,6 +201,12 @@ void Rigidbody::resolveCollision(Rigidbody* actor2, glm::vec2 contact, glm::vec2
 }
 
 
+// Add a function to Rigidbody to calculate the kinetic energy. For now this will just be linear kinetic energy,
+float Rigidbody::getKineticEnergy() 
+{ 
+	return 0.5f * (m_mass * glm::dot(m_velocity, m_velocity) +
+		m_moment * m_angularVelocity * m_angularVelocity);
+}
 
 // DOES THIS BELONG IN Rigidbody.H OR Rigidbody.CPP (latter is better practice)
 // We can then add a getPotentialEnergy() function to Rigidbody like so :

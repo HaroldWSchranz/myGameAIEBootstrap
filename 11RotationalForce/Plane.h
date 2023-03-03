@@ -5,7 +5,7 @@
 #include <vector>
 #include "PhysicsObject.h"
 //#include "RigidBody.h"
-#include "Gizmos.h"
+//#include "Gizmos.h"
 
 class Plane : public PhysicsObject
 {

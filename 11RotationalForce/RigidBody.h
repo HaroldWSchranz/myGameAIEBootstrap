@@ -42,7 +42,7 @@ public:
     float getMoment() { return m_moment; }
 
     // Add a function to Rigidbody to calculate the kinetic energy. For now this will just be linear kinetic energy,
-    float getKineticEnergy() { return 0.5f*m_mass* glm::dot(m_velocity,m_velocity); }
+    float getKineticEnergy();
 
     float getPotentialEnergy();
 

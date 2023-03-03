@@ -296,9 +296,9 @@ and justify the behaviour to yourself in physical terms.
 m_physicsScene->setGravity(vec2(0, -9.82f));
 m_physicsScene->setTimeStep(0.01f);
 
-Sphere* ball1 = new Sphere(vec2(0, 50), vec2(0.0f, -10.0f), 4.0f, 4, vec4(0.5, 0.0, 1.0, 1));
-Sphere* ball2 = new Sphere(vec2(0, 30), vec2(0, 0), 4.0f, 4, vec4(0.5, 0.5, 1.0, 1));
-Sphere* ball3 = new Sphere(vec2(0, 0), vec2(0.0f, 10.0f), 4.0f, 4, vec4(0.0, 0.0, 1.0, 1));
+Sphere* ball1 = new Sphere(vec2(0, 40), vec2(0.0f, -10.0f), 8.0f, 8, vec4(0.5, 0.0, 1.0, 1));
+Sphere* ball2 = new Sphere(vec2(0, 20), vec2(0, 0),         8.0f, 8, vec4(0.5, 0.5, 1.0, 1));
+Sphere* ball3 = new Sphere(vec2(0, 0), vec2(0.0f, 10.0f),   8.0f, 8, vec4(0.0, 0.0, 1.0, 1));
 
 Plane* plane = new Plane(vec2(0, 1), -30);
 
@@ -419,3 +419,31 @@ void PhysicsApp::draw() {
 	m_2dRenderer->end();
 
 }
+
+
+
+/*
+When we collide a Sphere with a Plane, r will always be zero, and no torque will be induced. If we
+drop a Box on to a plane so that it hits with two contact points, then the average contact point is the
+centre of the colliding face, and no torque is induced.
+If we drop a box that starts off at an angle (not 45 degrees on a square!), so that it collides with a
+horizontal plane by one point, then torque will be induced.
+Test that the following Rigidbody to Plane collisions do the following:
+• A sphere does not gain any angular velocity when dropped on a plane.
+• A box aligned with world axes (m_orientation =0) dropped on to a horizontal plane does not
+gain any angular velocity.
+• A box dropped at an angle does gain angular velocity. The more it spins after each bounce,
+the lower its bounce will be. If it hits the plane with a large value of r, then a smaller force
+will be applied due to the lower “effective mass”, giving rise to less linear acceleration. This
+also makes sense in terms of energy, because the total kinetic energy is being divided
+between linear kinetic energy and rotational kinetic energy. The split is different with each
+bounce.
+• The energy diagnostics do not show a significant change in the total energy in the system
+when the off-centre box hits the plane.
+
+
+TODO:
+It may be useful at this point to start adding various “scene” functions to your Application class,
+rather than changing out the code in startup(). Give them descriptive names like bouncyBall(),
+boxTest() and so on to make it easier to keep testing your physics engine as you add more features.
+*/

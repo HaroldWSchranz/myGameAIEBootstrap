@@ -2,19 +2,18 @@
 #include <glm/vec2.hpp>
 #include <glm/vec4.hpp>
 #include "RigidBody.h"
-#include "Gizmos.h"
+//#include "Gizmos.h"
 
 class Sphere : public Rigidbody
 {
 public:
-    Sphere(glm::vec2 position, glm::vec2 velocity,
-        float mass, float radius, glm::vec4 colour);
-    ~Sphere();
-
     Sphere();
 
-    Sphere(glm::vec2 position, float inclination, float speed,
-        float mass, float radius, glm::vec4 colour);
+    ~Sphere();
+
+    Sphere(glm::vec2 position, glm::vec2 velocity, float mass, float radius, glm::vec4 colour);
+
+    Sphere(glm::vec2 position, float inclination, float speed, float mass, float radius, glm::vec4 colour);
 
     virtual void draw();
 

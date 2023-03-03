@@ -44,7 +44,11 @@ public:
 	static bool sphere2Plane(PhysicsObject*, PhysicsObject*);
 	static bool sphere2Sphere(PhysicsObject*, PhysicsObject*);
 
-	static bool plane2Box(PhysicsObject* obj1, PhysicsObject* obj2); // 20230228: should it be static???
+	static bool plane2Box(PhysicsObject*, PhysicsObject*); // 20230228: should it be static???
+
+	static bool box2Sphere(PhysicsObject*, PhysicsObject*);
+
+	static bool box2Box(PhysicsObject*, PhysicsObject*);
 
 	float getTotalEnergy();
 
@@ -56,8 +60,8 @@ protected:
 
 	std::vector<PhysicsObject*> m_actors;
 
-	//int SHAPE_COUNT = 2;		// planes, spheres
-	int SHAPE_COUNT = 3;		// planes, spheres, boxes	
+	int SHAPE_COUNT = 2;		// planes, spheres
+	//int SHAPE_COUNT = 3;		// planes, spheres, boxes	
 };
 
 	// The sphere2Sphere function is a static function of PhysicsScene.

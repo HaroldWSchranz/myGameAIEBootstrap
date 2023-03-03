@@ -2,16 +2,16 @@
 #include <glm/vec2.hpp>
 #include <vector>
 
-enum ShapeType {
-    PLANE = 0,
-    SPHERE,
-    BOX
-};
-
 //enum ShapeType {
 //    PLANE = 0,
-//    SPHERE
+//    SPHERE,
+//    BOX
 //};
+
+enum ShapeType {
+    PLANE = 0,
+    SPHERE
+};
 
 class PhysicsObject
 {
