@@ -1,12 +1,36 @@
+#include <iostream>
 #include "Box.h"
+#include "Gizmos.h"
 
 Box::Box()
 {
+	std::cout << "*** Default Constructor of Box ***"; // useful to have messages with default constructors which are only useful for the compiler
+
 }
 
 Box::~Box()
 {
 	// If we had pointers we would delete (free memory) and assign to nullptr;
+}
+
+Box::Box(glm::vec2 position, glm::vec2 velocity, float mass, float width, float height, glm::vec2 localX, glm::vec2 localY, glm::vec4 colour)
+{
+	m_extents.x = width/2.f;
+	m_extents.y = height/2.f;
+	m_localX = localX;
+	m_localY = localY;
+	m_colour = colour;
+	m_moment = 1.0f / 12.0f * mass * width * height;
+}
+
+Box::Box(glm::vec2 position, float inclination, float speed, float mass, float width, float height, glm::vec2 localX, glm::vec2 localY, glm::vec4 colour)
+{
+	m_extents.x = width / 2.f;
+	m_extents.y = height / 2.f;
+	m_localX = localX;
+	m_localY = localY;
+	m_colour = colour;
+	m_moment = 1.0f / 12.0f * mass * width * height;
 }
 
 // check if any of the other box's corners are inside this box

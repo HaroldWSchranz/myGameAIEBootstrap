@@ -293,20 +293,24 @@ and justify the behaviour to yourself in physical terms.
 //	m_physicsScene->addActor(plane);
 //
 	//  DROPPING BALLS ON A PLANE:
-	m_physicsScene->setGravity(vec2(0, -9.82f));
-	m_physicsScene->setTimeStep(0.01f);
+m_physicsScene->setGravity(vec2(0, -9.82f));
+m_physicsScene->setTimeStep(0.01f);
 
-	Sphere* ball1 = new Sphere(vec2(0, 50), vec2( 0.5f, -10), 4.0f, 4, vec4(0.5, 0.0, 1.0, 1));
-	Sphere* ball2 = new Sphere(vec2(  0, 40), vec2(    0, 0), 4.0f, 4, vec4(0.5, 0.5, 1.0, 1));
-	Sphere* ball3 = new Sphere(vec2(0, 10), vec2(-0.5f, 10), 4.0f, 4, vec4(0.0, 0.0, 1.0, 1));
+Sphere* ball1 = new Sphere(vec2(0, 40), vec2(0.0f, -10.0f), 8.0f, 8, vec4(0.5, 0.0, 1.0, 1));
+Sphere* ball2 = new Sphere(vec2(0, 20), vec2(0, 0), 8.0f, 8, vec4(0.5, 0.5, 1.0, 1));
+Sphere* ball3 = new Sphere(vec2(0, 0), vec2(0.0f, 10.0f), 8.0f, 8, vec4(0.0, 0.0, 1.0, 1));
 
-	Plane* plane = new Plane(vec2(0, 1), -30);
+Plane* plane = new Plane(vec2(0, 1), -30);
+Plane* plane1 = new Plane(vec2(-1, 0), -96);
+Plane* plane2 = new Plane(vec2(+1, 0), -96);
 
-	m_physicsScene->addActor(ball1);
-	m_physicsScene->addActor(ball2);
-	m_physicsScene->addActor(ball3);
+m_physicsScene->addActor(ball1);
+m_physicsScene->addActor(ball2);
+m_physicsScene->addActor(ball3);
 
-	m_physicsScene->addActor(plane);
+m_physicsScene->addActor(plane);
+m_physicsScene->addActor(plane1);
+m_physicsScene->addActor(plane2);
 //
 
 	return true;
