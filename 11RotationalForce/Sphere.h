@@ -2,7 +2,6 @@
 #include <glm/vec2.hpp>
 #include <glm/vec4.hpp>
 #include "RigidBody.h"
-//#include "Gizmos.h"
 
 class Sphere : public Rigidbody
 {

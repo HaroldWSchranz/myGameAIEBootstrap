@@ -2,7 +2,6 @@
 #include <glm/vec2.hpp>
 #include <glm/vec4.hpp>
 #include "RigidBody.h"
-//#include "Gizmos.h"
 
 class Box : public Rigidbody
 {
@@ -21,7 +20,7 @@ public:
 
     void draw();
 
-    glm::vec2 getExtents() { return m_extents; }
+    glm::vec2 getExtents() const { return m_extents; }
     glm::vec2 getLocalX() { return m_localX; }
     glm::vec2 getLocalY() { return m_localY; }
     float getWidth()  { return 2 * m_extents.x; }

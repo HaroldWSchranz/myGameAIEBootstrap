@@ -13,7 +13,8 @@ Box::~Box()
 	// If we had pointers we would delete (free memory) and assign to nullptr;
 }
 
-Box::Box(glm::vec2 position, glm::vec2 velocity, float mass, float width, float height, glm::vec2 localX, glm::vec2 localY, glm::vec4 colour)
+Box::Box(glm::vec2 position, glm::vec2 velocity, float mass, float width, float height, glm::vec2 localX, glm::vec2 localY, glm::vec4 colour) :
+	Rigidbody::Rigidbody(BOX, position, velocity, 0, mass)
 {
 	m_extents.x = width/2.f;
 	m_extents.y = height/2.f;
@@ -23,7 +24,8 @@ Box::Box(glm::vec2 position, glm::vec2 velocity, float mass, float width, float 
 	m_moment = 1.0f / 12.0f * mass * width * height;
 }
 
-Box::Box(glm::vec2 position, float inclination, float speed, float mass, float width, float height, glm::vec2 localX, glm::vec2 localY, glm::vec4 colour)
+Box::Box(glm::vec2 position, float inclination, float speed, float mass, float width, float height, glm::vec2 localX, glm::vec2 localY, glm::vec4 colour) :
+	Rigidbody::Rigidbody(BOX, position, inclination, speed, 0, mass)
 {
 	m_extents.x = width / 2.f;
 	m_extents.y = height / 2.f;

@@ -27,17 +27,17 @@ PhysicsScene::~PhysicsScene()
 // function pointer array for doing our collisions
 typedef bool(*fn)(PhysicsObject*, PhysicsObject*);
 
-static fn collisionFunctionArray[] =
-{
-    PhysicsScene::plane2Plane,     PhysicsScene::plane2Sphere,
-    PhysicsScene::sphere2Plane, PhysicsScene::sphere2Sphere,
-};
 //static fn collisionFunctionArray[] =
 //{
-//   PhysicsScene::plane2Plane,  PhysicsScene::plane2Sphere,  PhysicsScene::plane2Box,
-//   PhysicsScene::sphere2Plane, PhysicsScene::sphere2Sphere, PhysicsScene::sphere2Box,
-//   PhysicsScene::box2Plane,    PhysicsScene::box2Sphere,    PhysicsScene::box2Box,
+//    PhysicsScene::plane2Plane,     PhysicsScene::plane2Sphere,
+//    PhysicsScene::sphere2Plane, PhysicsScene::sphere2Sphere,
 //};
+static fn collisionFunctionArray[] =
+{
+   PhysicsScene::plane2Plane,  PhysicsScene::plane2Sphere,  PhysicsScene::plane2Box,
+   PhysicsScene::sphere2Plane, PhysicsScene::sphere2Sphere, PhysicsScene::sphere2Box,
+   PhysicsScene::box2Plane,    PhysicsScene::box2Sphere,    PhysicsScene::box2Box,
+};
 
 void PhysicsScene::update(float dt)
 {
@@ -98,6 +98,21 @@ void PhysicsScene::draw()
     }
 }
 
+float PhysicsScene::getTotalEnergy()
+{
+    float total = 0;
+    for (auto it = m_actors.begin(); it != m_actors.end(); it++)
+    {
+        PhysicsObject* obj = *it;
+        total += obj->getEnergy();
+    }
+    return total;
+}
+
+void PhysicsScene::checkForCollision()
+{
+}
+
 bool PhysicsScene::sphere2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 {
     // try to cast objects to sphere and sphere
@@ -124,17 +139,6 @@ bool PhysicsScene::sphere2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
         }
     }
     return false;
-}
-
-float PhysicsScene::getTotalEnergy()
-{
-    float total = 0;
-    for (auto it = m_actors.begin(); it != m_actors.end(); it++)
-    {
-        PhysicsObject* obj = *it;
-        total += obj->getEnergy();
-    }
-    return total;
 }
 
 bool PhysicsScene::sphere2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
@@ -170,22 +174,11 @@ bool PhysicsScene::plane2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
     return sphere2Plane(obj2, obj1);
 }
 
-
-void PhysicsScene::checkForCollision()
-{
-}
-
 bool PhysicsScene::plane2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
 {
     // We can just return false, as both planes are static and require no collision response
     return false;
 }
-
-void PhysicsScene::addActor(PhysicsObject* actor)
-{
-    m_actors.push_back(actor);
-}
-
 
 bool PhysicsScene::plane2Box(PhysicsObject* obj1, PhysicsObject* obj2)
 {
@@ -238,6 +231,12 @@ bool PhysicsScene::plane2Box(PhysicsObject* obj1, PhysicsObject* obj2)
     return false;
 }
 
+bool PhysicsScene::box2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
+{
+    // reverse the order of arguments, as obj1 is the box and obj2 is the box
+    return plane2Box(obj2, obj1);
+}
+
 // Determine when a circle and a box have collided
 bool PhysicsScene::box2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 {
@@ -271,6 +270,12 @@ bool PhysicsScene::box2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
     return false;
 }
 
+bool PhysicsScene::sphere2Box(PhysicsObject* obj1, PhysicsObject* obj2)
+{
+    // reverse the order of arguments, as obj1 is the plane and obj2 is the sphere
+    return box2Sphere(obj2, obj1);
+}
+
 bool PhysicsScene::box2Box(PhysicsObject* obj1, PhysicsObject* obj2) {
     Box* box1 = dynamic_cast<Box*>(obj1);
     Box* box2 = dynamic_cast<Box*>(obj2);
@@ -290,6 +295,11 @@ bool PhysicsScene::box2Box(PhysicsObject* obj1, PhysicsObject* obj2) {
         return true;
     }
     return false;
+}
+
+void PhysicsScene::addActor(PhysicsObject* actor)
+{
+    m_actors.push_back(actor);
 }
 
 void PhysicsScene::removeActor(PhysicsObject* actor)
