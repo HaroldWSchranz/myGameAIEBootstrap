@@ -55,8 +55,8 @@ protected:
     float m_mass;
     //float m_orientation;    //2D so we only need a single float to represent our orientation
 
-    float m_orientation;   // Add the following variables to the Rigidbody class, and ensure they are initialized in the constructor(s).
-    float m_angularVelocity;
-    float m_moment;        // m_moment variable represents the moment of inertia, the rotational equivalent of mass
+    float m_orientation = 0.0f;   // Add the following variables to the Rigidbody class, and ensure they are initialized in the constructor(s).
+    float m_angularVelocity = 0.0f;
+    float m_moment = 0.0f;        // m_moment variable represents the moment of inertia, the rotational equivalent of mass
 };
 
