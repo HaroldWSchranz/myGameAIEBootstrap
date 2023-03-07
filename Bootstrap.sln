@@ -47,6 +47,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10RotationalForce", "10Rota
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "11RotationalForce", "11RotationalForce\11RotationalForce.vcxproj", "{EC567D45-967D-45C3-B502-2E93A9E45E05}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "12RotationalForce", "12RotationalForce\12RotationalForce.vcxproj", "{A558C541-4B0E-46AD-A084-01146FA7F52F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -207,6 +209,14 @@ Global
 		{EC567D45-967D-45C3-B502-2E93A9E45E05}.Release|x64.Build.0 = Release|x64
 		{EC567D45-967D-45C3-B502-2E93A9E45E05}.Release|x86.ActiveCfg = Release|Win32
 		{EC567D45-967D-45C3-B502-2E93A9E45E05}.Release|x86.Build.0 = Release|Win32
+		{A558C541-4B0E-46AD-A084-01146FA7F52F}.Debug|x64.ActiveCfg = Debug|x64
+		{A558C541-4B0E-46AD-A084-01146FA7F52F}.Debug|x64.Build.0 = Debug|x64
+		{A558C541-4B0E-46AD-A084-01146FA7F52F}.Debug|x86.ActiveCfg = Debug|Win32
+		{A558C541-4B0E-46AD-A084-01146FA7F52F}.Debug|x86.Build.0 = Debug|Win32
+		{A558C541-4B0E-46AD-A084-01146FA7F52F}.Release|x64.ActiveCfg = Release|x64
+		{A558C541-4B0E-46AD-A084-01146FA7F52F}.Release|x64.Build.0 = Release|x64
+		{A558C541-4B0E-46AD-A084-01146FA7F52F}.Release|x86.ActiveCfg = Release|Win32
+		{A558C541-4B0E-46AD-A084-01146FA7F52F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

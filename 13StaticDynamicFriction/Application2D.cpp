@@ -334,19 +334,19 @@ and justify the behaviour to yourself in physical terms.
 m_physicsScene->setGravity(vec2(0, 0));
 m_physicsScene->setTimeStep(0.01f);
 
-Sphere* ball1 = new Sphere(vec2(0, 0), vec2(5.0f, -10.0f), 2.0f, 5, vec4(0.5, 0.0, 0.5, 1));
-Sphere* ball2 = new Sphere(vec2(-20, 40), vec2(5.0f, -1.0f), 2.0f, 4, vec4(0.5, 0.5, 0.0, 1));
-Sphere* ball3 = new Sphere(vec2(20, 20), vec2(1.0f, 1.0f), 3.0f, 5, vec4(0.5, 0.5, 0.5, 1));
-Sphere* ball4 = new Sphere(vec2(0, -20), vec2(5.0f, -10.0f), 4.0f, 6, vec4(0.5, 0.0, 1.0, 1));
-Sphere* ball5 = new Sphere(vec2(-60, -40), vec2(5.0f, -10.0f), 6.0f, 4, vec4(0.5, 0.5, 0.0, 1));
-Sphere* ball6 = new Sphere(vec2(-10, -20), vec2(1.0f, 1.0f), 4.0f, 4, vec4(0.5, 0.5, 0.75, 1));
+Sphere* ball1 = new Sphere(vec2(  0,   0), vec2( 5.0f, -10.0f), 0.0f,  2.0f, 5, vec4(0.5, 0.0, 0.5,  1));
+Sphere* ball2 = new Sphere(vec2(-20,  40), vec2( 5.0f,  -1.0f), 0.0f,  2.0f, 4, vec4(0.5, 0.5, 0.0,  1));
+Sphere* ball3 = new Sphere(vec2( 20,  20), vec2( 1.0f,   1.0f), 0.0f,  3.0f, 5, vec4(0.5, 0.5, 0.5,  1));
+Sphere* ball4 = new Sphere(vec2(  0, -20), vec2( 5.0f, -10.0f), 9.0f,  8.0f, 6, vec4(0.5, 0.0, 1.0,  1));
+Sphere* ball5 = new Sphere(vec2(-60, -40), vec2( 5.0f, -10.0f), 6.0f,  6.0f, 4, vec4(1.0, 0.0, 1.0,  1));
+Sphere* ball6 = new Sphere(vec2(-10, -20), vec2( 1.0f,   1.0f), 3.0f,  4.0f, 4, vec4(0.0, 0.0, 0.75, 1));
 
-Box* box1 = new Box(vec2(20, -20), vec2(10.0f, 0.0f), 8.0f, 4, 4, vec2(0, 1), vec2(1, 0), vec4(0.5, 0.0, 0.0, 1));
-Box* box2 = new Box(vec2(40, 40), vec2(-10.0f, 1.0f), 8.0f, 4, 16, vec2(0, 1), vec2(1, 0), vec4(0.5, 1.0, 0.0, 1));
-Box* box3 = new Box(vec2(60, 40), vec2(-30.0f, 30.0f), 8.0f, 3, 30, vec2(1, 1), vec2(1, 0), vec4(0.5, 1.0, 1.0, 1));
-Box* box4 = new Box(vec2(60, 20), vec2(10.0f, 0.0f), 8.0f, 5, 5, vec2(0, 1), vec2(1, 0), vec4(0.5, 0.5, 0.5, 1));
-Box* box5 = new Box(vec2(-60, 40), vec2(-10.0f, 30.0f), 8.0f, 2, 10, vec2(0, 1), vec2(1, 1), vec4(0.5, 1.0, 0.5, 1));
-Box* box6 = new Box(vec2(-60, -30), vec2(-10.0f, 20.0f), 8.0f, 5, 15, vec2(0, 1), vec2(1, 0), vec4(0.5, 1.0, 0.0, 1));
+Box* box1 = new Box(vec2(20, -20),  vec2( 10.0f,  0.0f), 0.0f, 0.0f,  4.0f,  5,  5, vec4(1.0, 0.0, 0.0, 1));
+Box* box2 = new Box(vec2(40, 40),   vec2(-10.0f,  1.0f), 0.0f, 3.0f,  8.0f, 12, 12, vec4(1.0, 1.0, 0.0, 1));
+Box* box3 = new Box(vec2(60, 40),   vec2(-30.0f, 30.0f), 0.0f, 9.0f,  9.0f,  3, 30, vec4(0.0, 0.0, 1.0, 1));
+Box* box4 = new Box(vec2(60, 20),   vec2( 10.0f,  0.0f), 0.0f, 0.0f,  7.0f,  8,  8, vec4(0.5, 0.5, 0.5, 1));
+Box* box5 = new Box(vec2(-60, 40),  vec2(-10.0f, 30.0f), 0.0f, 0.0f,  6.0f,  2, 20, vec4(0.5, 1.0, 0.5, 1));
+Box* box6 = new Box(vec2(-60, -30), vec2(-10.0f, 20.0f), 0.0f, 6.0f,  9.0f,  5, 40, vec4(1.0, 1.0, 0.0, 1));
 
 
 Plane* plane1 = new Plane(vec2(-1, 0), -96);
