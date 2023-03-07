@@ -46,10 +46,10 @@ public:
 
 	static bool plane2Box(PhysicsObject*, PhysicsObject*); // 20230228: should it be static???
 	static bool box2Plane(PhysicsObject*, PhysicsObject*);
-
+	
 	static bool box2Sphere(PhysicsObject*, PhysicsObject*);
 	static bool sphere2Box(PhysicsObject*, PhysicsObject*);
-
+	
 	static bool box2Box(PhysicsObject*, PhysicsObject*);
 
 	float getTotalEnergy();

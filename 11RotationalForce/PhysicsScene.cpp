@@ -2,9 +2,9 @@
 #include "PhysicsScene.h"
 #include "PhysicsObject.h"
 
-#include "Box.h"
-#include "Sphere.h"
 #include "Plane.h"
+#include "Sphere.h"
+#include "Box.h"
 
 //PhysicsScene::PhysicsScene() : m_timeStep(0.01f), m_gravity(glm::vec2(0, 0))
 //{
@@ -32,12 +32,12 @@ typedef bool(*fn)(PhysicsObject*, PhysicsObject*);
 //    PhysicsScene::plane2Plane,     PhysicsScene::plane2Sphere,
 //    PhysicsScene::sphere2Plane, PhysicsScene::sphere2Sphere,
 //};
-static fn collisionFunctionArray[] =
-{
-   PhysicsScene::plane2Plane,  PhysicsScene::plane2Sphere,  PhysicsScene::plane2Box,
-   PhysicsScene::sphere2Plane, PhysicsScene::sphere2Sphere, PhysicsScene::sphere2Box,
-   PhysicsScene::box2Plane,    PhysicsScene::box2Sphere,    PhysicsScene::box2Box,
-};
+ static fn collisionFunctionArray[] =
+ {
+    PhysicsScene::plane2Plane,  PhysicsScene::plane2Sphere,  PhysicsScene::plane2Box,
+    PhysicsScene::sphere2Plane, PhysicsScene::sphere2Sphere, PhysicsScene::sphere2Box,
+    PhysicsScene::box2Plane,    PhysicsScene::box2Sphere,    PhysicsScene::box2Box,
+ };
 
 void PhysicsScene::update(float dt)
 {

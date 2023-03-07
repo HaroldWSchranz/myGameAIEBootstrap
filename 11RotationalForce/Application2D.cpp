@@ -5,6 +5,7 @@
 #include "Gizmos.h"
 #include "Plane.h"
 #include "Sphere.h"
+#include "Box.h"
 using namespace glm;
 
 PhysicsApp::PhysicsApp() {
@@ -292,25 +293,71 @@ and justify the behaviour to yourself in physical terms.
 //
 //	m_physicsScene->addActor(plane);
 //
-	//  DROPPING BALLS ON A PLANE:
-m_physicsScene->setGravity(vec2(0, -9.82f));
+//  DROPPING BALLS ON A PLANE:
+//m_physicsScene->setGravity(vec2(0, -9.82f));
+//m_physicsScene->setTimeStep(0.01f);
+//
+//Sphere* ball1 = new Sphere(vec2(0, 40), vec2(0.0f, -10.0f), 8.0f, 8, vec4(0.5, 0.0, 1.0, 1));
+//Sphere* ball2 = new Sphere(vec2(0, 20), vec2(0, 0),         8.0f, 8, vec4(0.5, 0.5, 1.0, 1));
+//Sphere* ball3 = new Sphere(vec2(0, 0), vec2(0.0f, 10.0f),   8.0f, 8, vec4(0.0, 0.0, 1.0, 1));
+//
+//Plane* plane = new Plane(vec2(0, 1), -30);
+//Plane* plane1 = new Plane(vec2(-1, 0), -96);
+//Plane* plane2 = new Plane(vec2(+1, 0), -96);
+//
+//m_physicsScene->addActor(ball1);
+//m_physicsScene->addActor(ball2);
+//m_physicsScene->addActor(ball3);
+//
+//m_physicsScene->addActor(plane);
+//m_physicsScene->addActor(plane1);
+//m_physicsScene->addActor(plane2);
+//
+//  DROPPING BALL ON A PLANE:
+//m_physicsScene->setGravity(vec2(0, -9.82f));
+//m_physicsScene->setTimeStep(0.01f);
+//
+//Sphere* ball1 = new Sphere(vec2(0, 40), vec2(0.0f, -10.0f), 8.0f, 8, vec4(0.5, 0.0, 1.0, 1));
+//
+//Plane* plane = new Plane(vec2(0, 1), -30);
+//Plane* plane1 = new Plane(vec2(-1, 0), -96);
+//Plane* plane2 = new Plane(vec2(+1, 0), -96);
+//
+//m_physicsScene->addActor(ball1);
+//
+//m_physicsScene->addActor(plane);
+//m_physicsScene->addActor(plane1);
+//m_physicsScene->addActor(plane2);
+////
+// PLANES, SPHERES, BOXES:
+//m_physicsScene->setGravity(vec2(0, -9.82f));
+m_physicsScene->setGravity(vec2(0, 0));
 m_physicsScene->setTimeStep(0.01f);
 
-Sphere* ball1 = new Sphere(vec2(0, 40), vec2(0.0f, -10.0f), 8.0f, 8, vec4(0.5, 0.0, 1.0, 1));
-Sphere* ball2 = new Sphere(vec2(0, 20), vec2(0, 0),         8.0f, 8, vec4(0.5, 0.5, 1.0, 1));
-Sphere* ball3 = new Sphere(vec2(0, 0), vec2(0.0f, 10.0f),   8.0f, 8, vec4(0.0, 0.0, 1.0, 1));
+Sphere* ball1 = new Sphere(vec2(0, 40), vec2(5.0f, -10.0f), 2.0f, 4, vec4(0.5, 0.0, 1.0, 1));
+Sphere* ball2 = new Sphere(vec2(-20, 40), vec2(5.0f, -1.0f), 2.0f, 4, vec4(0.5, 0.5, 0.0, 1));
+Sphere* ball3 = new Sphere(vec2(-20, 20), vec2(1.0f, 1.0f), 3.0f, 3, vec4(0.5, 0.5, 0.5, 1));
 
-Plane* plane = new Plane(vec2(0, 1), -30);
+Box* box1 = new Box(vec2(20, 20), vec2(10.0f, 0.0f), 8.0f, 3, 3, vec2(0,1), vec2(1,0), vec4(0.5, 0.0, 0.0, 1));
+Box* box2 = new Box(vec2(40, 40), vec2(-10.0f, 0.0f), 8.0f, 4, 8, vec2(0, 1), vec2(1, 0), vec4(0.5, 1.0, 0.0, 1));
+Box* box3 = new Box(vec2(50, 30), vec2(-10.0f, 0.0f), 8.0f, 5, 5, vec2(0, 1), vec2(1, 0), vec4(0.5, 1.0, 1.0, 1));
+
 Plane* plane1 = new Plane(vec2(-1, 0), -96);
 Plane* plane2 = new Plane(vec2(+1, 0), -96);
+Plane* plane3 = new Plane(vec2(0, +1), -52);
+Plane* plane4 = new Plane(vec2(0, -1), -52);
 
 m_physicsScene->addActor(ball1);
 m_physicsScene->addActor(ball2);
 m_physicsScene->addActor(ball3);
+m_physicsScene->addActor(box1);
+m_physicsScene->addActor(box2);
+m_physicsScene->addActor(box3);
 
-m_physicsScene->addActor(plane);
 m_physicsScene->addActor(plane1);
 m_physicsScene->addActor(plane2);
+m_physicsScene->addActor(plane3);
+m_physicsScene->addActor(plane4);
 //
 
 return true;
