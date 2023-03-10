@@ -28,10 +28,13 @@ public:
     virtual void resetPosition() {};
     virtual float getEnergy();
 
+    float getElasticity() { return m_elasticity; }
+
     ShapeType getShapeID() const {
         return m_shapeID;
     }
 
 protected:
     ShapeType m_shapeID;
+    float m_elasticity = 0.25f; //how much elasticity our objects have
 };

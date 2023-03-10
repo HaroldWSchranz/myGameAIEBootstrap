@@ -62,6 +62,17 @@ Rigidbody::~Rigidbody()
 // CORRECT ORDER: update position then apply gravity
 void Rigidbody::fixedUpdate(glm::vec2 gravity, float timeStep)
 {
+	//Update the velocity calculations in your Rigidbody fixedUpdate() function for drag
+	m_velocity -= m_velocity * m_linearDrag * timeStep;
+	m_angularVelocity -= m_angularVelocity * m_angularDrag * timeStep;
+	//
+	if (length(m_velocity) < MIN_LINEAR_THRESHOLD) {
+		m_velocity = glm::vec2(0, 0);
+	}
+	if (abs(m_angularVelocity) < MIN_ANGULAR_THRESHOLD) {
+		m_angularVelocity = 0;
+	}
+	//
 	m_position += m_velocity * timeStep;
 	//applyForce(gravity * m_mass * timeStep);
 	applyForce(gravity * m_mass * timeStep, m_position);
@@ -98,7 +109,6 @@ void Rigidbody::applyForce(glm::vec2 force, glm::vec2 pos)
 	m_velocity += force / getMass();
 	m_angularVelocity += (force.y * pos.x - force.x * pos.y) / getMoment();
 }
-
 
 
 /*
@@ -167,6 +177,9 @@ actor2 (thus implementing the “equal and opposite” part of Newton’s third law).
 //	std::cout << "impulse j = " << j << std::endl;
 //}
 
+//void Rigidbody::resolveCollision(Rigidbody* actor2, glm::vec2 contact, glm::vec2* collisionNormal)
+//{
+//}
 void Rigidbody::resolveCollision(Rigidbody* actor2, glm::vec2 contact, glm::vec2* collisionNormal)
 {
 	// find the vector between their centres, or use the provided direction
@@ -192,10 +205,12 @@ void Rigidbody::resolveCollision(Rigidbody* actor2, glm::vec2 contact, glm::vec2
 		float mass1 = 1.0f / (1.0f / m_mass + (r1 * r1) / m_moment);
 		float mass2 = 1.0f / (1.0f / actor2->m_mass + (r2 * r2) / actor2->m_moment);
 		//float elasticity = 1;
-		//glm::vec2 force = (1.0f + elasticity) * mass1 * mass2 /
-		//	(mass1 + mass2) * (v1 - v2) * normal;
-		glm::vec2 force = (1.0f + getElasticity()) * mass1 * mass2 /
+		//elasticity of the two objects involved in the collision = taking the average of the two objects’ elasticity
+		float elasticity = (getElasticity() + actor2->getElasticity()) / 2.0f;
+		glm::vec2 force = (1.0f + elasticity) * mass1 * mass2 /
 			(mass1 + mass2) * (v1 - v2) * normal;
+		//glm::vec2 force = (1.0f + getElasticity()) * mass1 * mass2 /
+		//	(mass1 + mass2) * (v1 - v2) * normal;
 		//apply equal and opposite forces
 		applyForce(-force, contact - m_position);
 		actor2->applyForce(force, contact - actor2->m_position);
